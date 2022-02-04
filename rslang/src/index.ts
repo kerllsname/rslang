@@ -1,4 +1,5 @@
-import { App } from './app/app';
+import './style.css';
+import App from './app/app';
 
 const rootNode: HTMLElement | null = document.querySelector('.root');
 if (rootNode) {
