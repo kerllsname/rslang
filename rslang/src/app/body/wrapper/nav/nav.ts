@@ -1,4 +1,4 @@
-// import BaseComponent from '../../utility/baseComponent';
+import BaseComponent from '../../../utility/baseComponent';
 
 export default class Nav {
   readonly nav: HTMLElement;
@@ -10,7 +10,12 @@ export default class Nav {
   render(): HTMLElement {
     this.root.appendChild(this.nav);
     this.nav.classList.add('nav');
-    this.nav.innerHTML = '<h2>nav</h2>';
+    new BaseComponent(this.nav, 'button', ['home'], 'Главная').render();
+    new BaseComponent(this.nav, 'button', ['home'], 'Учебник').render();
+    new BaseComponent(this.nav, 'button', ['home'], 'Словарь').render();
+    new BaseComponent(this.nav, 'button', ['home'], 'Игры').render();
+    new BaseComponent(this.nav, 'button', ['home'], 'Статистика').render();
+    new BaseComponent(this.nav, 'button', ['home'], 'О команде').render();
 
     return this.nav;
   }

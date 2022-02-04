@@ -10,7 +10,6 @@ export default class Main {
   render(): HTMLElement {
     this.root.appendChild(this.main);
     this.main.classList.add('main');
-    this.main.innerHTML = '<h2>main</h2>';
 
     return this.main;
   }
