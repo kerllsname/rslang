@@ -1,4 +1,6 @@
 import BaseComponent from '../../../../utility/baseComponent';
+import deletePage from '../../../../utility/deletePage';
+import getPage from '../../../../utility/getPage';
 
 export default class Nav {
   readonly nav: HTMLElement;
@@ -7,7 +9,23 @@ export default class Nav {
 
   constructor(private readonly root: HTMLElement) {
     this.nav = document.createElement('nav');
-    this.ul = document.createElement('nav');
+    this.ul = document.createElement('ul');
+  }
+
+  navListener() {
+    const liItems = this.ul.querySelectorAll('li');
+
+    liItems.forEach((item) => {
+      item.addEventListener('click', this.handler);
+    });
+  }
+
+  handler({ currentTarget: item }) {
+    if (!item.classList.contains('active')) {
+      deletePage();
+      item.classList.toggle('active');
+      getPage(item.classList[1]);
+    }
   }
 
   render(): HTMLElement {
@@ -15,12 +33,15 @@ export default class Nav {
     this.nav.classList.add('nav');
     this.nav.appendChild(this.ul);
     this.ul.classList.add('nav__ul');
+
     new BaseComponent(this.ul, 'li', ['nav__li', 'home', 'active'], 'home').render();
     new BaseComponent(this.ul, 'li', ['nav__li', 'textbook'], 'textbook').render();
     new BaseComponent(this.ul, 'li', ['nav__li', 'dictionary'], 'dictionary').render();
     new BaseComponent(this.ul, 'li', ['nav__li', 'games'], 'games').render();
     new BaseComponent(this.ul, 'li', ['nav__li', 'statistics'], 'statistics').render();
     new BaseComponent(this.ul, 'li', ['nav__li', 'about'], 'about').render();
+
+    this.navListener();
 
     return this.nav;
   }
