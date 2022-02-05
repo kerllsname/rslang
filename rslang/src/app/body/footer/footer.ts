@@ -15,7 +15,7 @@ export default class Footer {
   render(): HTMLElement {
     this.root.appendChild(this.footer);
     this.footer.classList.add('footer');
-    new BaseComponent(this.footer, 'div', ['date'], '&copy; <time>2022</time>').render();
+    new BaseComponent(this.footer, 'div', ['footer__date'], '&copy; <time>2022</time>').render();
     new Author(this.footer, 'Igor').render().setAttribute('href', 'https://github.com/BromBom');
     new Author(this.footer, 'Kirill').render().setAttribute('href', 'https://github.com/kerllsname');
     new RssLogo(this.footer).render();
