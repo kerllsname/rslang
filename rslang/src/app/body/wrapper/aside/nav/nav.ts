@@ -15,12 +15,12 @@ export default class Nav {
     this.nav.classList.add('nav');
     this.nav.appendChild(this.ul);
     this.ul.classList.add('nav__ul');
-    new BaseComponent(this.ul, 'li', ['nav__li-home', 'acive'], 'home').render();
-    new BaseComponent(this.ul, 'li', ['nav__li-textbook'], 'textbook').render();
-    new BaseComponent(this.ul, 'li', ['nav__li-dictionary'], 'dictionary').render();
-    new BaseComponent(this.ul, 'li', ['nav__li-games'], 'games').render();
-    new BaseComponent(this.ul, 'li', ['nav__li-statistics'], 'statistics').render();
-    new BaseComponent(this.ul, 'li', ['nav__li-about'], 'about Us').render();
+    new BaseComponent(this.ul, 'li', ['nav__li', 'home', 'active'], 'home').render();
+    new BaseComponent(this.ul, 'li', ['nav__li', 'textbook'], 'textbook').render();
+    new BaseComponent(this.ul, 'li', ['nav__li', 'dictionary'], 'dictionary').render();
+    new BaseComponent(this.ul, 'li', ['nav__li', 'games'], 'games').render();
+    new BaseComponent(this.ul, 'li', ['nav__li', 'statistics'], 'statistics').render();
+    new BaseComponent(this.ul, 'li', ['nav__li', 'about'], 'about').render();
 
     return this.nav;
   }
