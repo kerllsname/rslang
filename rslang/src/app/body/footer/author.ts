@@ -10,7 +10,7 @@ export default class Author {
 
   render(): HTMLElement {
     this.root.appendChild(this.author);
-    this.author.classList.add('author');
+    this.author.classList.add('footer__author');
     return this.author;
   }
 }

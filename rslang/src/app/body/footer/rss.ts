@@ -10,7 +10,7 @@ export default class RssLogo {
 
   render(): HTMLElement {
     this.root.appendChild(this.rssLogo);
-    this.rssLogo.classList.add('rss-logo');
+    this.rssLogo.classList.add('footer__rss-logo');
     return this.rssLogo;
   }
 }

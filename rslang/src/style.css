@@ -21,7 +21,7 @@
   background-color: #FF7400;
 }
 
-.log-in {
+.header__log-in {
   width: 40px;
   height: 40px;
   text-align: center;
@@ -39,12 +39,17 @@
   min-height: 882px;
 }
 
+.aside {
+  width: 15%;
+  padding: 0 2%;
+  background-color: #FF9640;
+}
+
 .nav {
   display: flex;
   flex-direction: column;
   justify-items: start;
-  width: 15%;
-  padding: 0 2%;
+  width: 100%;
   background-color: #FF9640;
 }
 
