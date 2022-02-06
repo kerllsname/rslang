@@ -1,5 +1,5 @@
 import BaseComponent from '../../../utility/base-сomponent';
-import MainBox from './main-text-box';
+import MainBox from '../../../utility/home/home-text-box';
 
 export default class MainHome {
   readonly mainHome: HTMLElement;

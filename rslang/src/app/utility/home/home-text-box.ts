@@ -1,4 +1,4 @@
-import BaseComponent from '../../../utility/base-сomponent';
+import BaseComponent from '../base-сomponent';
 
 export default class MainBox {
   readonly mainBox: HTMLElement;
@@ -13,7 +13,7 @@ export default class MainBox {
     this.mainBox.classList.add('main__home-box');
 
     new BaseComponent(this.mainBox, 'div', ['main__home-img']).render();
-    new BaseComponent(this.mainBox, 'p', ['main__home-text'], `${this.text}`).render();
+    new BaseComponent(this.mainBox, 'div', ['main__home-text'], `${this.text}`).render();
 
     return this.mainBox;
   }
