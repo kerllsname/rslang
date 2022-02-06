@@ -180,7 +180,7 @@ margin-bottom: 30px;
   justify-content: space-around;
 }
 
-.games__audio {
+.main__games-audio {
   height: 200px;
   width: 400px;
   margin-top: 300px;
@@ -188,7 +188,7 @@ margin-bottom: 30px;
   text-align: center;
 }
 
-.games__sprint {
+.main__games-sprint {
   height: 200px;
   width: 400px;
   margin-top: 300px;
