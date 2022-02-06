@@ -196,6 +196,29 @@ margin-bottom: 30px;
   text-align: center;
 }
 
+.main__about {
+  display: flex;
+  justify-content: space-around;
+}
+
+.about-kirill {
+  width: 400px;
+  margin-top: 200px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.about-igor {
+  width: 400px;
+  margin-top: 200px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.about_avatar {
+  width: 350px;
+}
+
 .footer {
   display: flex;
   flex-direction: row;
