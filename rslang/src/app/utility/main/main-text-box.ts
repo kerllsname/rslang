@@ -10,10 +10,10 @@ export default class MainBox {
 
   render(): HTMLElement {
     this.root.appendChild(this.mainBox);
-    this.mainBox.classList.add('main-box');
+    this.mainBox.classList.add('main__home-box');
 
-    new BaseComponent(this.mainBox, 'div', ['main__img']).render();
-    new BaseComponent(this.mainBox, 'p', ['main__text'], `${this.text}`).render();
+    new BaseComponent(this.mainBox, 'div', ['main__home-img']).render();
+    new BaseComponent(this.mainBox, 'p', ['main__home-text'], `${this.text}`).render();
 
     return this.mainBox;
   }
