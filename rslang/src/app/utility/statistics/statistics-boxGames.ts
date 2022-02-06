@@ -14,7 +14,7 @@ export default class StatisticsBoxGames {
 
     new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-img']).render();
     new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-nameGame'], `${this.text}`).render();
-    new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-row1'], '<span class="game-words">100</span><span>  words</span>').render();
+    new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-row1'], '<span class="game-words">0</span><span>  words</span>').render();
     new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-row2'], '<span class="game-accuracy">0</span><span>% accuracy</span>').render();
     new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-row3'], '<span class="game-inRow">0</span><span>  in a row</span>').render();
 
