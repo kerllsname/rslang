@@ -1,4 +1,4 @@
-import BaseComponent from '../../../utility/baseComponent';
+import BaseComponent from '../../../utility/base-сomponent';
 import MainBox from './main-text-box';
 
 export default class MainHome {

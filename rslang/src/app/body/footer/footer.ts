@@ -1,4 +1,4 @@
-import BaseComponent from '../../utility/baseComponent';
+import BaseComponent from '../../utility/base-сomponent';
 import RssLogo from './rss';
 import Author from './author';
 

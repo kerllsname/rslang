@@ -1,4 +1,4 @@
-import BaseComponent from '../../utility/baseComponent';
+import BaseComponent from '../../utility/base-сomponent';
 
 export default class Header {
   readonly header: HTMLElement;
