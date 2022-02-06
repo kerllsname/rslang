@@ -175,6 +175,27 @@ margin-bottom: 30px;
   margin-top: 30px;
 }
 
+.main__games {
+  display: flex;
+  justify-content: space-around;
+}
+
+.games__audio {
+  height: 200px;
+  width: 400px;
+  margin-top: 300px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.games__sprint {
+  height: 200px;
+  width: 400px;
+  margin-top: 300px;
+  border: 1px solid black;
+  text-align: center;
+}
+
 .footer {
   display: flex;
   flex-direction: row;
