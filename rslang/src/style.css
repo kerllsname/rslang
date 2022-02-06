@@ -137,6 +137,44 @@ margin-bottom: 30px;
   font-size: 40px;
 }
 
+.textbook__games {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 30px;
+  justify-content: space-around;
+}
+
+.textbook__games button {
+  height: 50px;
+  width: 100px;
+  border: none;
+}
+
+.textbook__cards-pages {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 360px;
+  list-style-type: none;
+}
+
+.textbook__cards-pages li {
+  width: 40px;
+  margin: 0 10px;
+}
+
+.cards-pages__page-button {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+}
+
+.cards-block__card {
+  display: flex;
+  margin-top: 30px;
+}
+
 .footer {
   display: flex;
   flex-direction: row;

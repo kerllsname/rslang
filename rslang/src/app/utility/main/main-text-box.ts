@@ -1,4 +1,4 @@
-import BaseComponent from '../../../utility/base-сomponent';
+import BaseComponent from '../base-сomponent';
 
 export default class MainBox {
   readonly mainBox: HTMLElement;

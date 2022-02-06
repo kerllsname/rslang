@@ -1,6 +1,6 @@
 import BaseComponent from '../../../../utility/base-сomponent';
-import deletePage from '../../../../utility/delete-page';
-import getPage from '../../../../utility/get-page';
+import deletePage from '../../../../utility/main/delete-page';
+import getPage from '../../../../utility/main/get-page';
 
 export default class Nav {
   readonly nav: HTMLElement;
