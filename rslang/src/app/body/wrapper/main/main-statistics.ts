@@ -35,6 +35,10 @@ export default class MainStatistics {
     this.containerWords.appendChild(this.boxWords);
     this.boxWords.classList.add('main__statistics__boxWords');
     new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-wordsCount'], '0').render();
+    new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-p1'], 'new words').render();
+
+    this.boxWords.classList.add('main__statistics__boxWords');
+    new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-wordsCount'], '0').render();
     new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-p1'], 'words').render();
     new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-p2'], 'were learned').render();
 
