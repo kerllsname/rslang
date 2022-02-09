@@ -17,7 +17,7 @@ export default class AudioChallange {
 
     new BaseComponent(this.audioChallange, 'div', ['main__games__audioChallange-img']).render();
     new BaseComponent(this.audioChallange, 'div', ['main__games__audioChallange-buttonSound']).render();
-    new BaseComponent(this.audioChallange, 'div', ['main__games__audioChallange-buttonSkip']).render();
+    new BaseComponent(this.audioChallange, 'div', ['main__games__audioChallange-buttonSkip'], 'Skip &#10162').render();
     new AnswerBox(this.audioChallange).render();
 
     this.audioChallange.appendChild(this.containerPanel);
