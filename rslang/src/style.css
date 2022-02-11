@@ -258,6 +258,14 @@ margin-bottom: 30px;
   border: none;
 }
 
+.active-group-button {
+  background: red;
+}
+
+.textbook__cards-block {
+  min-height: 2000px;
+}
+
 .cards-block__card {
   display: flex;
   margin-top: 30px;
