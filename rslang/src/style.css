@@ -74,14 +74,13 @@ html {
   width: 100%;
   list-style-type: none;
   text-transform: capitalize;
-
   margin-bottom: 10px;
 }
 
 .nav__li {
-height: 30px;
-vertical-align: middle;
-cursor: pointer;
+  height: 30px;
+  vertical-align: middle;
+  cursor: pointer;
 }
 
 .nav__li.active {
@@ -328,6 +327,68 @@ margin-bottom: 30px;
   color: #67E667;
 }
 
+/*-----------Game-Audio-levels--------------------------*/
+
+.main__games__audioChallange-levels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 400px;
+}
+
+.main__games__audioChallange-levels__head {
+  font-family: 'Kalam';
+  font-size: 4rem;
+}
+
+.main__games__audioChallange-levels__title {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.main__games__audioChallange-levels__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 400px;
+}
+
+
+.main__games__audioChallange-levels-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  font-family: 'Roboto';
+  font-weight: 900;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  background-color: #A63E00;
+  cursor: pointer;
+}
+
+.main__games__audioChallange-levels-group:hover {
+  transform: scale(1.5);
+  transition: 0.4s;
+}
+
+.main__games__audioChallange-levels__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 120px;
+  font-family: 'Roboto';
+  font-weight: 900;
+  font-size: 1.2rem;
+  background-color: #A63E00;
+  cursor: pointer;
+}
+
+
 /*-----------Game-Audio--------------------------*/
 
 .main__games__audioChallange {
@@ -340,8 +401,8 @@ margin-bottom: 30px;
 }
 
 .main__games__audioChallange-img {
-  width: 250px;
-  height: 250px;
+  width: 390px;
+  height: 260px;
   background-color: #5CCCCC;
 }
 
@@ -351,8 +412,23 @@ margin-bottom: 30px;
   border-radius: 50%;
   background: no-repeat center url('../src/assets/svg/sound.svg');
   background-color: #4671D5;
+  box-shadow: 10px 10px 10px -5px rgba(34, 60, 80, 0.55);
   cursor: pointer;
 }
+
+.main__games__audioChallange-buttonSound:hover {
+  transform: translateY(-3px);
+  transition: 0.4s;
+  box-shadow: 10px 10px 10px 0px rgba(34, 60, 80, 0.55);
+}
+
+.main__games__audioChallange-buttonSound:active {
+  background-color: #d54652;
+  transform: translateY(5px);
+  transition: 0.1s;
+  box-shadow: 0px 0px 0px 0px rgba(34, 60, 80, 0.55);
+}
+
 
 .main__games__audioChallange-buttonSkip {
   width: 100px;
@@ -372,12 +448,23 @@ margin-bottom: 30px;
 }
 
 .main__games__audioChallange__buttonAnswer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 180px;
   height: 60px;
   text-align: center;
   border-radius: 10px;
-  background-color: #39E639;
+  background-color: #5CCCCC;
   cursor: pointer;
+}
+
+.main__games__audioChallange__buttonAnswer[data-answer='yes'] {
+  background-color: #00CC00;
+}
+
+.main__games__audioChallange__buttonAnswer[data-answer='no'] {
+  background-color: #FF0000;
 }
 
 .main__games__audioChallange__containerPanel {
