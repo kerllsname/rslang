@@ -21,6 +21,7 @@ export default class Card {
     private readonly root: HTMLElement,
     private readonly count: number,
     private readonly group: number,
+    private readonly page: number,
   ) {
     this.card = document.createElement('div');
     this.imageBlock = document.createElement('div');
@@ -54,7 +55,7 @@ export default class Card {
   }
 
   async insertHandler() {
-    const data: IWord[] = await getData(`words?page=0&group=${this.group}`);
+    const data: IWord[] = await getData(`words?page=${this.page}&group=${this.group}`);
 
     this.insertContent(data, this.count);
   }
