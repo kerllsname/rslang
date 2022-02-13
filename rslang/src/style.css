@@ -416,14 +416,19 @@ margin-bottom: 30px;
   cursor: pointer;
 }
 
-.main__games__audioChallange-buttonSound:hover {
+.main__games__audioChallange-buttonSound:hover,
+.main__games__audioChallange-buttonSkip:hover,
+.main__games__audioChallange-buttonNext:hover,
+.main__games__audioChallange__buttonAnswer:hover {
   transform: translateY(-3px);
   transition: 0.4s;
   box-shadow: 10px 10px 10px 0px rgba(34, 60, 80, 0.55);
 }
 
-.main__games__audioChallange-buttonSound:active {
-  background-color: #d54652;
+.main__games__audioChallange-buttonSound:active,
+.main__games__audioChallange-buttonSkip:active,
+.main__games__audioChallange-buttonNext:active,
+.main__games__audioChallange__buttonAnswer:active {
   transform: translateY(5px);
   transition: 0.1s;
   box-shadow: 0px 0px 0px 0px rgba(34, 60, 80, 0.55);
@@ -431,12 +436,28 @@ margin-bottom: 30px;
 
 
 .main__games__audioChallange-buttonSkip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100px;
   height: 40px;
-  text-align: center;
   font-size: 1.7rem;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: #FF4040;
+  box-shadow: 10px 10px 10px -5px rgba(34, 60, 80, 0.55);
+  cursor: pointer;
+}
+
+.main__games__audioChallange-buttonNext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 40px;
+  font-size: 1.7rem;
+  border-radius: 10px;
+  background-color: #00CC00;
+  box-shadow: 10px 10px 10px -5px rgba(34, 60, 80, 0.55);
   cursor: pointer;
 }
 
@@ -449,18 +470,24 @@ margin-bottom: 30px;
 
 .main__games__audioChallange__buttonAnswer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 180px;
-  height: 60px;
+  width: 240px;
+  height: 80px;
+  font-size: 1.5rem;
   text-align: center;
   border-radius: 10px;
   background-color: #5CCCCC;
+  box-shadow: 10px 10px 10px -5px rgba(34, 60, 80, 0.55);
   cursor: pointer;
 }
 
 .main__games__audioChallange__buttonAnswer[data-answer='yes'] {
+  font-size: 1.3rem;
   background-color: #00CC00;
+  transform: scale(1.5);
+  transition: 0.2s;
 }
 
 .main__games__audioChallange__buttonAnswer[data-answer='no'] {

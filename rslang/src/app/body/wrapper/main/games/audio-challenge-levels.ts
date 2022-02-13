@@ -31,7 +31,7 @@ export default class AudioChallangeLvl {
         const main: HTMLElement | null = document.querySelector('.main');
         if (audioChallangeLvl && main) {
           audioChallangeLvl.remove();
-          new AudioChallange(main, this.wordsInGroup).render();
+          new AudioChallange(main, this.wordsInGroup, '1').render();
         }
       }
     }

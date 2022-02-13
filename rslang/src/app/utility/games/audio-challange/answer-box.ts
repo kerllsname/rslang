@@ -24,18 +24,30 @@ export default class AnswerBox {
     if (target && target.tagName === 'DIV') {
       if (!this.isPush) {
         this.isPush = true;
-        target.classList.add('.answer');
+        target.classList.add('answer');
         target.setAttribute('data-answer', 'yes');
         const img = document.querySelector('.main__games__audioChallange-img');
         img!.setAttribute('src', `http://localhost:8000/${this.currentWord.image}`);
         const sound = new Audio();
         sound.src = '../../../../assets/sounds/success.mp3';
         sound.autoplay = true;
+        // ПЕРЕРИСОВКА
+        const btnSkip: HTMLElement | null = document.querySelector('.main__games__audioChallange-buttonSkip');
+        if (btnSkip) {
+          btnSkip.classList.add('main__games__audioChallange-buttonNext');
+          btnSkip.innerHTML = 'NEXT';
+          const btnAnswer: HTMLElement = target;
+          btnAnswer.innerHTML = `
+          <p>${this.currentWord.word}</p>
+          <p>${this.currentWord.transcription}</p>
+          <p>${this.currentWord.wordTranslate}</p>
+          `;
+        }
       }
     }
   }
 
-  pushButton(target: HTMLElement | null): void {
+  pushBtnWrong(target: HTMLElement | null): void {
     if (target && target.tagName === 'DIV') {
       if (!this.isPush) {
         this.isPush = true;
@@ -74,7 +86,7 @@ export default class AnswerBox {
     }
 
     buttonsArray.forEach((item) => {
-      item.addEventListener('click', ({ target }) => this.pushButton(target as HTMLElement));
+      item.addEventListener('click', ({ target }) => this.pushBtnWrong(target as HTMLElement));
     });
 
     return this.answerBox;
