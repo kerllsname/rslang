@@ -2,6 +2,7 @@ import BaseComponent from '../../../../utility/base-сomponent';
 import AudioChallange from './audio-challenge';
 import IWord from '../../../../interfaces/word';
 import getWords from '../../../../utility/games/audio-challange/get-words';
+import IStorage from '../../../../interfaces/audio-challenge-storage';
 
 export default class AudioChallangeLvl {
   readonly audioChallangeLvl: HTMLElement;
@@ -10,28 +11,41 @@ export default class AudioChallangeLvl {
 
   public wordsInGroup: IWord[];
 
+  public storage: IStorage;
+
+  public currentCountWord: string;
+
   constructor(private readonly root: HTMLElement) {
     this.audioChallangeLvl = document.createElement('div');
     this.container = document.createElement('section');
     this.wordsInGroup = [] as IWord[];
+    this.storage = {
+      countAnswerСorrect: 0,
+      namesAnswerСorrect: [],
+      inRow: 0,
+      setInRow: new Set(),
+      countAnswerWrong: 0,
+      namesAnswerWrong: [],
+    };
+    this.currentCountWord = '1';
   }
 
   async addListenerToButtonLvl(target: HTMLElement | null): Promise<void> {
     if (target && target.tagName === 'DIV') {
       if (target.dataset.group) {
-        const x: Promise<IWord[]>[] = [];
+        const arrPromisesFromPages30: Promise<IWord[]>[] = [];
         for (let i = 0; i < 30; i += 1) {
-          const y = getWords(target.dataset.group, `${i}`);
-          x.push(y);
+          const promisFromPage = getWords(target.dataset.group, `${i}`);
+          arrPromisesFromPages30.push(promisFromPage);
         }
-        const y = await Promise.all(x);
-        this.wordsInGroup = y.reduce((a, b) => a.concat(b));
+        const arrOfArrsWords = await Promise.all(arrPromisesFromPages30);
+        this.wordsInGroup = arrOfArrsWords.reduce((a, b) => a.concat(b));
         // ПЕРЕРИСОВКА
         const audioChallangeLvl: HTMLElement | null = document.querySelector('.main__games__audioChallange-levels');
         const main: HTMLElement | null = document.querySelector('.main');
         if (audioChallangeLvl && main) {
           audioChallangeLvl.remove();
-          new AudioChallange(main, this.wordsInGroup, '1').render();
+          new AudioChallange(main, this.wordsInGroup, this.currentCountWord, this.storage).render();
         }
       }
     }
