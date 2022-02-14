@@ -95,9 +95,9 @@ html {
 /*-------------------------------home----------------------------------*/
 .main__home-title {
   margin-top: 5%;
-  margin-bottom: 60px;
+  margin-bottom: 2%;
   font-family: 'Kalam';
-  font-size: 60px;
+  font-size: 4rem;
   text-align: center;
 }
 
@@ -137,11 +137,9 @@ margin-bottom: 30px;
   font-family: 'Kalam';
   font-size: 40px;
 }
-/*-----------------------------------end home-------------------------------------*/
-
-
 
 /*----------------------------------statistics------------------------------------*/
+
 .main__statistics-title {
   margin-top: 5%;
   text-align: center;
@@ -162,7 +160,7 @@ margin-bottom: 30px;
   flex-direction: column;
 }
 
-.main__statistics__boxWords-wordsCount {
+.main__statistics__boxWords-words-count {
   text-align: center;
   font-family: 'Roboto';
   font-weight: 600;
@@ -222,7 +220,6 @@ margin-bottom: 30px;
 }
 
 /*--------------------------------end statistics----------------------------------*/
-
 
 .textbook__games {
   display: flex;
@@ -329,7 +326,7 @@ margin-bottom: 30px;
 
 /*-----------Game-Audio-levels--------------------------*/
 
-.main__games__audioChallange-levels {
+.main__games__audio-challange-levels {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -337,26 +334,24 @@ margin-bottom: 30px;
   height: 400px;
 }
 
-.main__games__audioChallange-levels__head {
+.main__games__audio-challange-levels__head {
   font-family: 'Kalam';
   font-size: 4rem;
 }
 
-.main__games__audioChallange-levels__title {
+.main__games__audio-challange-levels__title {
   font-family: 'Roboto';
-  font-weight: 400;
   font-size: 2rem;
 }
 
-.main__games__audioChallange-levels__container {
+.main__games__audio-challange-levels__container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 400px;
 }
 
-
-.main__games__audioChallange-levels-group {
+.main__games__audio-challange-levels-group {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -370,12 +365,12 @@ margin-bottom: 30px;
   cursor: pointer;
 }
 
-.main__games__audioChallange-levels-group:hover {
+.main__games__audio-challange-levels-group:hover {
   transform: scale(1.5);
   transition: 0.4s;
 }
 
-.main__games__audioChallange-levels__button {
+.main__games__audio-challange-levels__button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -388,10 +383,9 @@ margin-bottom: 30px;
   cursor: pointer;
 }
 
-
 /*-----------Game-Audio--------------------------*/
 
-.main__games__audioChallange {
+.main__games__audio-challange {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -400,13 +394,13 @@ margin-bottom: 30px;
   height: 100%;
 }
 
-.main__games__audioChallange-img {
+.main__games__audio-challange-img {
   width: 390px;
   height: 260px;
   background-color: #5CCCCC;
 }
 
-.main__games__audioChallange-buttonSound {
+.main__games__audio-challange-buttonSound {
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -416,26 +410,26 @@ margin-bottom: 30px;
   cursor: pointer;
 }
 
-.main__games__audioChallange-buttonSound:hover,
-.main__games__audioChallange-buttonSkip:hover,
-.main__games__audioChallange-buttonNext:hover,
-.main__games__audioChallange__buttonAnswer:hover {
+.main__games__audio-challange-buttonSound:hover,
+.main__games__audio-challange-buttonSkip:hover,
+.main__games__audio-challange-buttonNext:hover,
+.main__games__audio-challange__buttonAnswer:hover {
   transform: translateY(-3px);
   transition: 0.4s;
   box-shadow: 10px 10px 10px 0px rgba(34, 60, 80, 0.55);
 }
 
-.main__games__audioChallange-buttonSound:active,
-.main__games__audioChallange-buttonSkip:active,
-.main__games__audioChallange-buttonNext:active,
-.main__games__audioChallange__buttonAnswer:active {
+.main__games__audio-challange-buttonSound:active,
+.main__games__audio-challange-buttonSkip:active,
+.main__games__audio-challange-buttonNext:active,
+.main__games__audio-challange__buttonAnswer:active {
   transform: translateY(5px);
   transition: 0.1s;
   box-shadow: 0px 0px 0px 0px rgba(34, 60, 80, 0.55);
 }
 
 
-.main__games__audioChallange-buttonSkip {
+.main__games__audio-challange-buttonSkip {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -448,7 +442,7 @@ margin-bottom: 30px;
   cursor: pointer;
 }
 
-.main__games__audioChallange-buttonNext {
+.main__games__audio-challange-buttonNext {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -461,14 +455,14 @@ margin-bottom: 30px;
   cursor: pointer;
 }
 
-.main__games__audioChallange__answerBox {
+.main__games__audio-challange__answerBox {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
 }
 
-.main__games__audioChallange__buttonAnswer {
+.main__games__audio-challange__buttonAnswer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -483,18 +477,18 @@ margin-bottom: 30px;
   cursor: pointer;
 }
 
-.main__games__audioChallange__buttonAnswer[data-answer='yes'] {
+.main__games__audio-challange__buttonAnswer[data-answer='yes'] {
   font-size: 1.3rem;
   background-color: #00CC00;
   transform: scale(1.5);
   transition: 0.2s;
 }
 
-.main__games__audioChallange__buttonAnswer[data-answer='no'] {
+.main__games__audio-challange__buttonAnswer[data-answer='no'] {
   background-color: #FF0000;
 }
 
-.main__games__audioChallange__containerPanel {
+.main__games__audio-challange__containerPanel {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -502,30 +496,132 @@ margin-bottom: 30px;
   width: 100%;
 }
 
-.main__games__audioChallange__containerPanel-buttonVolume {
+.main__games__audio-challange__containerPanel-buttonVolume {
   width: 30px;
   height: 30px;
   background: no-repeat center url('../src/assets/svg/volume.svg');
   cursor: pointer;
 }
 
-.main__games__audioChallange__containerPanel-buttonVolume:hover {
+.main__games__audio-challange__containerPanel-buttonVolume:hover {
   transform: scale(1.5);
   transition: 0.4s;
 }
 
-.main__games__audioChallange__containerPanel-counter {
+.main__games__audio-challange__containerPanel-counter {
   font-size: 2rem;
 }
 
-.main__games__audioChallange__containerPanel-fullScreen {
+.main__games__audio-challange__containerPanel-fullScreen {
   width: 30px;
   height: 30px;
   background: no-repeat center url('../src/assets/svg/maximize.svg');
   cursor: pointer;
 }
 
-.main__games__audioChallange__containerPanel-fullScreen:hover {
+.main__games__audio-challange__containerPanel-fullScreen:hover {
   transform: scale(1.5);
   transition: 0.4s;
+}
+
+/*------------------------Game-Audio-result--------------------------*/
+
+.result {
+  display: flex;
+  flex-direction: column;
+}
+
+.result__title {
+  font-family: 'Kalam';
+  font-size: 4rem;
+  text-align: center;
+}
+
+.result__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.result__statistic-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.result__accuracy,
+.result__accuracyNum {
+  align-self: center;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 4rem;
+}
+
+.result__correct,
+.result__in-row,
+.result__wrong {
+  align-self: center;
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.result-answer,
+.result-wrong {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-answer__plus,
+.result-wrong__minus {
+  width: 35px;
+  height: 35px;
+  align-self: center;
+
+}
+
+.result-answer__plus {
+  background-image: url(../src/assets/svg/success.svg);
+}
+
+.result-wrong__minus {
+  background-image: url(../src/assets/svg/wrong.svg);
+}
+
+.result-answer__name,
+.result-wrong__name {
+  align-self: center;
+}
+
+.result-answer__container,
+.result-wrong__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 32px;
+  font-size: 1.5rem;
+}
+
+.result__sound-wrong,
+.result__sound-answer {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  background-color: #6C8CD5;
+  background-image: url(../src/assets/svg/speaker.svg);
+}
+
+.result__sound-wrong:hover,
+.result__sound-answer:hover {
+  background-color: #67E667;
+}
+
+.result__sound-wrong:active,
+.result__sound-answer:active {
+  background-color: #67E667;
+  transform: scale(0.8);
+}
+
+
+.result__word {
+  margin-right: 5px;
 }
