@@ -238,6 +238,7 @@ margin-bottom: 30px;
   border: none;
 }
 
+.textbook__cards-groups,
 .textbook__cards-pages {
   display: flex;
   margin: 0 auto;
@@ -246,16 +247,46 @@ margin-bottom: 30px;
   list-style-type: none;
 }
 
+.textbook__cards-pages {
+  width: 540px;
+}
+
+.textbook__cards-groups li,
 .textbook__cards-pages li {
   width: 40px;
   margin: 0 10px;
 }
 
+.cards-groups__group-button,
 .cards-pages__page-button {
   height: 40px;
   width: 40px;
   border-radius: 50%;
   border: none;
+}
+
+.cards-pages__page-button {
+  border-radius: 20%;
+}
+
+.cards-pages__page-button {
+  cursor: pointer;
+}
+
+.active-group-button,
+.active-page-button {
+  background: red;
+  pointer-events: none;
+  cursor: none;
+}
+
+.page-un-button {
+  pointer-events: none;
+  cursor: none;
+}
+
+.textbook__cards-block {
+  min-height: 2000px;
 }
 
 .cards-block__card {

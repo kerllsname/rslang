@@ -1,4 +1,4 @@
-// import MainHome from './main-home';
+import MainHome from './main-home';
 import AudioChallange from './games/audio-challenge';
 
 export default class Main {
@@ -12,8 +12,8 @@ export default class Main {
     this.root.appendChild(this.main);
     this.main.classList.add('main');
 
-    // new MainHome(this.main).render();
-    new AudioChallange(this.main).render();
+    new MainHome(this.main).render();
+    // new AudioChallange(this.main).render();
 
     return this.main;
   }

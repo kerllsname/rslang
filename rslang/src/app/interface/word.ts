@@ -1,7 +1,8 @@
 export default interface IWord {
   id: string,
+  group: number,
   page: number,
-  word: number,
+  word: string,
   image: string,
   audio: string,
   audioMeaning: string,

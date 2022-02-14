@@ -7,12 +7,12 @@ export default class AudioChallange {
 
   readonly containerPanel: HTMLElement;
 
-  readonly dataSound: string;
+  //readonly dataSound: string;
 
   constructor(private readonly root: HTMLElement) {
     this.audioChallange = document.createElement('div');
     this.containerPanel = document.createElement('div');
-    this.dataSound = await getData('');
+    //this.dataSound = await getData('');
   }
 
   playSound(): void {
