@@ -1,6 +1,6 @@
 import getData from '../../request/get-data';
 import BaseComponent from '../base-сomponent';
-import IWord from '../../interface/word';
+import IWord from '../../interfaces/word';
 
 export default class Card {
   readonly card: HTMLElement;
