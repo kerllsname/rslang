@@ -19,7 +19,7 @@ export default class Header {
     return this.header;
   }
 
-  handler({ currentTarget: button }) {
+  handler() {
     new Authorization(this.root).render();
   }
 }

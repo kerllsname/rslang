@@ -86,6 +86,16 @@ html {
   justify-content: center;
 }
 
+.registration__notification,
+.authorization_notification {
+  display: none;
+}
+
+.registration__submit,
+.authorization__submit {
+  display: block;
+}
+
 .wrapper {
   display: flex;
   flex-direction: row;
