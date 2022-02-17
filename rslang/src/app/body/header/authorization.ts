@@ -8,6 +8,8 @@ import BaseComponent from '../../utility/base-сomponent';
 export default class Authorization {
   readonly authWrapper: HTMLElement;
 
+  readonly accountBody: HTMLElement;
+
   readonly authBody: HTMLElement;
 
   readonly authContent: HTMLElement;
@@ -24,6 +26,7 @@ export default class Authorization {
     this.authWrapper = document.createElement('div');
     this.authBody = document.createElement('div');
     this.authContent = document.createElement('div');
+    this.accountBody = document.createElement('div');
 
     this.exitBlock = document.createElement('div');
     this.fields = document.createElement('div');
@@ -34,6 +37,7 @@ export default class Authorization {
     this.registarionHandler = this.registarionHandler.bind(this);
     this.exitHandler = this.exitHandler.bind(this);
     this.logInHandler = this.logInHandler.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
   render() {
@@ -97,6 +101,11 @@ export default class Authorization {
       };
 
       const answer = await this.logInUser(user);
+
+      localStorage.setItem('token', `${answer.token}`);
+      localStorage.setItem('refreshToken', `${answer.refreshToken}`);
+      localStorage.setItem('id', `${answer.userId}`);
+
       this.logInNotification(answer, email, password);
     }
   }
@@ -192,7 +201,15 @@ export default class Authorization {
 
     if (header && logButton) {
       logButton.remove();
-      new BaseComponent(header, 'div', ['header__account-title'], `${name}`).render();
+      header.appendChild(this.accountBody);
+      this.accountBody.classList.add('header__account-body');
+      new BaseComponent(this.accountBody, 'div', ['account-body__account-title'], `${name}`).render();
+      new BaseComponent(this.accountBody, 'button', ['account-body__account-logout'], 'log out').render().addEventListener('click', this.logOut);
     }
+  }
+
+  logOut() {
+    localStorage.clear();
+    window.location.reload();
   }
 }

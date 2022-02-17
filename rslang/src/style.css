@@ -50,6 +50,10 @@ html {
   cursor: pointer;
 }
 
+.account-body__account-logout {
+  cursor: pointer;
+}
+
 .authorization-wrapper {
   position: fixed;
   width: 100%;
