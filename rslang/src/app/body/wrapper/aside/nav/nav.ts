@@ -28,6 +28,8 @@ export default class Nav {
     }
   }
 
+  
+
   render(): HTMLElement {
     this.root.appendChild(this.nav);
     this.nav.classList.add('nav');
