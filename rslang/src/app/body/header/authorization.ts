@@ -2,7 +2,7 @@
 /* eslint-disable class-methods-use-this */
 import IUser from '../../interfaces/user';
 import registarion from '../../request/registration';
-import signIn from '../../request/loh-in';
+import signIn from '../../request/log-in';
 import BaseComponent from '../../utility/base-сomponent';
 
 export default class Authorization {
