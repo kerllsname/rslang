@@ -136,7 +136,7 @@ export default class MainTextbook {
   }
 
   insertCardsGroupsList() {
-    for (let i = 1; i <= 6; i += 1) {
+    for (let i = 1; i <= 7; i += 1) {
       this.buttonCreate('groups', 'group', '', i);
     }
   }
