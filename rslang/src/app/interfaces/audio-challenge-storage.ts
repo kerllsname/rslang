@@ -9,4 +9,5 @@ export default interface IStorage {
   namesAnswerWrong: string[],
   namesAnswerWrongTranslate: string[],
   namesAnswerWrongSound: string[],
+  score: number,
 }

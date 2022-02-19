@@ -1,8 +1,8 @@
-import BaseComponent from '../../../../utility/base-сomponent';
+import BaseComponent from '../../../../../utility/base-сomponent';
 import AudioChallange from './audio-challenge';
-import IWord from '../../../../interfaces/word';
-import getWords from '../../../../utility/games/audio-challange/get-words';
-import IStorage from '../../../../interfaces/audio-challenge-storage';
+import IWord from '../../../../../interfaces/word';
+import getWords from '../../../../../utility/games/audio-challange/get-words';
+import IStorage from '../../../../../interfaces/audio-challenge-storage';
 
 export default class AudioChallangeLvl {
   readonly audioChallangeLvl: HTMLElement;
@@ -30,6 +30,7 @@ export default class AudioChallangeLvl {
       namesAnswerWrong: [],
       namesAnswerWrongTranslate: [],
       namesAnswerWrongSound: [],
+      score: 0,
     };
     this.currentCountWord = '1';
   }
@@ -45,12 +46,9 @@ export default class AudioChallangeLvl {
         const arrOfArrsWords = await Promise.all(arrPromisesFromPages30);
         this.wordsInGroup = arrOfArrsWords.reduce((a, b) => a.concat(b));
         // ПЕРЕРИСОВКА
-        const audioChallangeLvl: HTMLElement | null = document.querySelector('.main__games__audio-challange-levels');
-        const main: HTMLElement | null = document.querySelector('.main');
-        if (audioChallangeLvl && main) {
-          audioChallangeLvl.remove();
-          new AudioChallange(main, this.wordsInGroup, this.currentCountWord, this.storage).render();
-        }
+        this.audioChallangeLvl.remove();
+        new AudioChallange(this.root, this.wordsInGroup, this.currentCountWord, this.storage)
+          .render();
       }
     }
   }
@@ -70,8 +68,6 @@ export default class AudioChallangeLvl {
     new BaseComponent(this.container, 'div', ['main__games__audio-challange-levels-group', 'lvl-4'], '4').render().setAttribute('data-group', '3');
     new BaseComponent(this.container, 'div', ['main__games__audio-challange-levels-group', 'lvl-5'], '5').render().setAttribute('data-group', '4');
     new BaseComponent(this.container, 'div', ['main__games__audio-challange-levels-group', 'lvl-6'], '6').render().setAttribute('data-group', '5');
-
-    new BaseComponent(this.audioChallangeLvl, 'div', ['main__games__audio-challange-levels__button'], 'BACK').render();
 
     this.container.addEventListener('click', ({ target }) => this.addListenerToButtonLvl(target as HTMLElement));
 

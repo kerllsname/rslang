@@ -1,9 +1,9 @@
-import BaseComponent from '../../../../utility/base-сomponent';
-import AnswerBox from '../../../../utility/games/audio-challange/answer-box';
-import playSound from '../../../../utility/games/audio-challange/play-sound';
-import IWord from '../../../../interfaces/word';
-import Result from '../../../../utility/games/audio-challange/result';
-import IStorage from '../../../../interfaces/audio-challenge-storage';
+import BaseComponent from '../../../../../utility/base-сomponent';
+import AnswerBox from '../../../../../utility/games/audio-challange/answer-box';
+import playSound from '../../../../../utility/games/audio-challange/play-sound';
+import IWord from '../../../../../interfaces/word';
+import Result from '../../../../../utility/games/audio-challange/result';
+import IStorage from '../../../../../interfaces/audio-challenge-storage';
 
 export default class AudioChallange {
   readonly audioChallange: HTMLElement;

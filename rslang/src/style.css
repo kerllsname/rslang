@@ -357,7 +357,8 @@ margin-bottom: 30px;
 
 /*-----------Game-Audio-levels--------------------------*/
 
-.main__games__audio-challange-levels {
+.main__games__audio-challange-levels,
+.main__games__sprint-levels {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -365,24 +366,28 @@ margin-bottom: 30px;
   height: 400px;
 }
 
-.main__games__audio-challange-levels__head {
+.main__games__audio-challange-levels__head,
+.main__games__sprint-levels__head {
   font-family: 'Kalam';
   font-size: 4rem;
 }
 
-.main__games__audio-challange-levels__title {
+.main__games__audio-challange-levels__title,
+.main__games__sprint-levels__title {
   font-family: 'Roboto';
   font-size: 2rem;
 }
 
-.main__games__audio-challange-levels__container {
+.main__games__audio-challange-levels__container,
+.main__games__sprint-levels__container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 400px;
 }
 
-.main__games__audio-challange-levels-group {
+.main__games__audio-challange-levels-group,
+.main__games__sprint-levels-group {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -396,12 +401,14 @@ margin-bottom: 30px;
   cursor: pointer;
 }
 
-.main__games__audio-challange-levels-group:hover {
+.main__games__audio-challange-levels-group:hover,
+.main__games__sprint-levels-group:hover {
   transform: scale(1.5);
   transition: 0.4s;
 }
 
-.main__games__audio-challange-levels__button {
+.main__games__audio-challange-levels__back,
+.main__games__sprint-levels__back {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -411,6 +418,7 @@ margin-bottom: 30px;
   font-weight: 900;
   font-size: 1.2rem;
   background-color: #A63E00;
+  box-shadow: 10px 10px 10px -5px rgba(34, 60, 80, 0.55);
   cursor: pointer;
 }
 
@@ -431,6 +439,7 @@ margin-bottom: 30px;
   background-color: #5CCCCC;
 }
 
+.sprint__button-sound,
 .main__games__audio-challange-buttonSound {
   width: 80px;
   height: 80px;
@@ -441,6 +450,8 @@ margin-bottom: 30px;
   cursor: pointer;
 }
 
+.sprint__button-sound:hover,
+.main__games__audio-challange-levels__button:hover,
 .main__games__audio-challange-buttonSound:hover,
 .main__games__audio-challange-buttonSkip:hover,
 .main__games__audio-challange-buttonNext:hover,
@@ -450,6 +461,8 @@ margin-bottom: 30px;
   box-shadow: 10px 10px 10px 0px rgba(34, 60, 80, 0.55);
 }
 
+.sprint__button-sound:active,
+.main__games__audio-challange-levels__button:active,
 .main__games__audio-challange-buttonSound:active,
 .main__games__audio-challange-buttonSkip:active,
 .main__games__audio-challange-buttonNext:active,
@@ -652,7 +665,93 @@ margin-bottom: 30px;
   transform: scale(0.8);
 }
 
-
 .result__word {
   margin-right: 5px;
 }
+
+/*---------------------------------------------------------------------*/
+
+
+.sprint {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+  
+  .sprint__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  
+  .sprint__title {
+  font-size: 6rem;
+  }
+  
+  .sprint__score {
+  font-size: 6rem;
+  }
+  
+  .sprint__card-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 450px;
+  height: 400px;
+  background-color: #2299eb;
+  border-radius: 25px;
+  }
+  
+  .sprint__panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 5%;
+  width: 150px;
+  }
+  
+  .mark {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fd0000;
+  }
+  
+  .sprint__img-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  font-family: 'Kalam';
+  font-size: 4rem;
+  }
+  
+  .sprint__word {
+    margin-top: 5%;
+  font-size: 2rem;
+  }
+
+  .sprint__translate {
+    margin-top: 5%;
+  }
+  
+  .sprint__buttons-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  }
+
+  .sprint__button-false {
+  background-color: #fd0000;
+  width: 110px;
+  height: 50px;
+  border-radius: 5px;
+  }
+  
+  .sprint__button-true {
+  background-color: #08aa05;
+  width: 110px;
+  height: 50px;
+  border-radius: 5px;
+  }
