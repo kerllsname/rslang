@@ -2,6 +2,8 @@ import BaseComponent from '../../base-сomponent';
 import StatWordsWrong from '../audio-challange/result-wrong';
 import StatWordsAnswer from '../audio-challange/result-answer';
 import IStorage from '../../../interfaces/audio-challenge-storage';
+import IStatistic from '../../../interfaces/statistic';
+import saveUserStatistics from '../../../request/put-statistics';
 
 export default class ResultSprint {
   readonly resultSprint: HTMLElement;
@@ -16,7 +18,7 @@ export default class ResultSprint {
     this.statisticBox = document.createElement('div');
   }
 
-  render(): HTMLElement {
+  async render() {
     this.root.appendChild(this.resultSprint);
     this.resultSprint.classList.add('result');
 
@@ -36,6 +38,19 @@ export default class ResultSprint {
     new StatWordsAnswer(this.container, this.storage).render();
     new StatWordsWrong(this.container, this.storage).render();
 
-    return this.resultSprint;
+    const userToken: string | null = localStorage.getItem('token');
+    const userID: string | null = localStorage.getItem('id');
+
+    if (userToken && userID) {
+      const storage: IStatistic = {
+        learnedWords: this.storage.countAnswerСorrect,
+        optional: {
+          countAnswerСorrect: this.storage.countAnswerСorrect,
+          countAnswerWrong: this.storage.countAnswerWrong,
+          inRow: this.storage.inRow,
+        },
+      };
+      await saveUserStatistics(userID, userToken, storage);
+    }
   }
 }

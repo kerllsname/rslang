@@ -3,6 +3,8 @@
 import BaseComponent from '../../../utility/base-сomponent';
 import Card from '../../../utility/main-textbook/card';
 import deleteBlocks from '../../../utility/main-textbook/delete-cards';
+import AudioChallangeLvl from './games/audio-challenge/audio-challenge-levels';
+import SprintLvl from './games/sprint/sprint-levels';
 
 export default class MainTextbook {
   readonly mainTextbook: HTMLElement;
@@ -85,20 +87,36 @@ export default class MainTextbook {
     this.rebuildPagesList(page, group);
   }
 
+  pushBtnPlayAudio(target: HTMLElement | null): void {
+    if (target && target.tagName === 'BUTTON') {
+      // ПЕРЕРИСОВКА
+      this.mainTextbook.remove();
+      new AudioChallangeLvl(this.root).render();
+    }
+  }
+
+  pushBtnPlaySprint(target: HTMLElement | null): void {
+    if (target && target.tagName === 'BUTTON') {
+      // ПЕРЕРИСОВКА
+      this.mainTextbook.remove();
+      new SprintLvl(this.root).render();
+    }
+  }
+
   insertGames() {
     new BaseComponent(
       this.gamesBlock,
       'button',
       ['games__audio-challenge'],
       'audio challenge',
-    ).render();
+    ).render().addEventListener('click', ({ target }) => this.pushBtnPlayAudio(target as HTMLElement));
 
     new BaseComponent(
       this.gamesBlock,
       'button',
       ['games__sprint'],
       'sprint',
-    ).render();
+    ).render().addEventListener('click', ({ target }) => this.pushBtnPlaySprint(target as HTMLElement));;
   }
 
   buttonCreate(place: string, subPlace: string, classOfButton: string, inner) {
