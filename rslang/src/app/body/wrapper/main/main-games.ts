@@ -1,5 +1,6 @@
 import BaseComponent from '../../../utility/base-сomponent';
-import AudioChallangeLvl from './games/audio-challenge-levels';
+import AudioChallangeLvl from './games/audio-challenge/audio-challenge-levels';
+import SprintLvl from './games/sprint/sprint-levels';
 
 export default class MainGames {
   readonly mainGames: HTMLElement;
@@ -25,6 +26,17 @@ export default class MainGames {
     }
   }
 
+  pushBtnPlaySprint(target: HTMLElement | null): void {
+    if (target && target.tagName === 'BUTTON') {
+      // ПЕРЕРИСОВКА
+      const main: HTMLElement | null = document.querySelector('.main');
+      if (main) {
+        this.mainGames.remove();
+        new SprintLvl(main).render();
+      }
+    }
+  }
+
   render(): HTMLElement {
     this.root.appendChild(this.mainGames);
     this.mainGames.classList.add('main__games');
@@ -44,6 +56,11 @@ export default class MainGames {
     const btnPlayAudio: HTMLElement | null = document.querySelector('.game-audio__play');
     if (btnPlayAudio) {
       btnPlayAudio.addEventListener('click', ({ target }) => this.pushBtnPlayAudio(target as HTMLElement));
+    }
+
+    const btnPlaySprint: HTMLElement | null = document.querySelector('.game-sprint__play');
+    if (btnPlaySprint) {
+      btnPlaySprint.addEventListener('click', ({ target }) => this.pushBtnPlaySprint(target as HTMLElement));
     }
 
     return this.mainGames;
