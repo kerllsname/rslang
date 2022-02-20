@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Kalam:300,regular,700);
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
   margin: 0;
@@ -24,8 +26,8 @@ html {
   align-items: center;
   width: 100%;
   height: 50px;
-  padding: 2% 2%;
-  background-color: #FF7400;
+  padding: 10px;
+  background-color: #a399e181;
 }
 
 .header__logo {
@@ -41,17 +43,42 @@ html {
 }
 
 .header__log-in {
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  padding: 0.5em 0;
-  border-radius: 50%;
-  background-color: #ffffff;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #8c7ecc9a;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
   cursor: pointer;
+}
+
+.header__account-body {
+  display: flex;
 }
 
 .account-body__account-logout {
   cursor: pointer;
+}
+
+.account-body__account-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.account-body__account-logout {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #8c7ecc9a;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+}
+
+.header__log-in:hover,
+.account-body__account-logout:hover {
+  background-color: #8c7ecc;
+  transition: 0.5s ease-in-out;
 }
 
 .authorization-wrapper {
@@ -72,27 +99,119 @@ html {
 }
 
 .authorization-body__content {
-  max-width: 800px;
+  width: 600px;
+  max-width: 600px;
+  height: 400px;
   padding: 10px;
-  background-color: #fff;
+  border-radius: 20px;
+  background-color: #ffffffe1;
   color: #000000;
 }
 
 .content__exit {
-  width: 10px;
+  width: 20px;
   margin-left: auto;
   cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
 }
 
 .content__fields {
+  height: 90%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  margin-left: 3px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.registration__title,
+.authorization__title {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+}
+
+.registration__title,
+.authorization__title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.registration__nickname-title,
+.registration__email-title,
+.registration__password-title,
+.authorization__email-title,
+.authorization__password-title {
+  margin-left: 5px;
+}
+
+.registration__name,
+.registration__email,
+.registration__password,
+.authorization__email,
+.authorization__password {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  height: calc(1rem + 2px);
+  padding: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+}
+
+.registration__name:focus ,
+.registration__email:focus ,
+.registration__password:focus ,
+.authorization__email:focus ,
+.authorization__password:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #bdbdbd;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+}
+
+.registration__submit,
+.authorization__submit {
+  margin-top: 30px;
+  height: 40px;
+  width: 100%;
+  background-color: #8c7ecc9a;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.registration__submit:hover,
+.authorization__submit:hover {
+  background-color: #8c7ecc;
+  transition: 0.5s ease-in-out;
+}
+
+.authorization__submit {
+  margin-top: 80px;
 }
 
 .registration__notification,
 .authorization_notification {
   display: none;
+  margin-left: 5px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .registration__submit,
@@ -109,38 +228,42 @@ html {
 }
 
 .aside {
-  width: 15%;
-  padding: 0 0 0 2%;
-  background-color: #A63E00;
+  padding: 0 1% 0 1%;
+  background-color: #8b7ee17e;
 }
 
 .nav {
-  width: 100%;
+  width: 140px;
+  font-family: 'Roboto', sans-serif;
+  color: #201919e0;
   font-size: 2rem;
-  background-color: #A63E00;
 }
 
 .nav__ul {
-  width: 100%;
+  margin-top: 30px;
   list-style-type: none;
   text-transform: capitalize;
   margin-bottom: 10px;
 }
 
 .nav__li {
+  margin-bottom: 10px;
   height: 30px;
+  width: 140px;
   vertical-align: middle;
   cursor: pointer;
 }
 
 .nav__li.active {
-  background-color: #FFB273;
+  text-decoration-line: underline;
+  text-decoration-color: #FFFFFF;
 }
 
 .main {
-  width: 85%;
+  width: 100%;
+  min-height: 890px;
   padding: 0 2%;
-  background-color: #FFB273;
+  background-color: #FFFFFF;
 }
 /*-------------------------------home----------------------------------*/
 .main__home-title {
@@ -271,6 +394,8 @@ margin-bottom: 30px;
 
 /*--------------------------------end statistics----------------------------------*/
 
+/*-----------------------------------textbook-------------------------------------*/
+
 .textbook__games {
   display: flex;
   margin: 0 auto;
@@ -279,49 +404,91 @@ margin-bottom: 30px;
 }
 
 .textbook__games button {
-  height: 50px;
-  width: 100px;
+  height: 70px;
+  width: 150px;
+  border-radius: 10px;
   border: none;
+  background: #5b5292af;
+  cursor: pointer;
+  color: white;
+}
+
+.textbook__cards-groups-block,
+.textbook__cards-pages-block {
+  max-width: 750px;
+  margin: 0 auto;
+  margin-top: 30px;
+  text-align: center;
 }
 
 .textbook__cards-groups,
 .textbook__cards-pages {
   display: flex;
-  margin: 0 auto;
-  margin-top: 30px;
-  width: 420px;
+  justify-content: center;
   list-style-type: none;
-}
-
-.textbook__cards-pages {
-  width: 540px;
 }
 
 .textbook__cards-groups li,
 .textbook__cards-pages li {
-  width: 40px;
+  width: 50px;
   margin: 0 10px;
 }
 
-.cards-groups__group-button,
-.cards-pages__page-button {
-  height: 40px;
-  width: 40px;
+.cards-groups__group-button {
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   border: none;
-}
-
-.cards-pages__page-button {
-  border-radius: 20%;
-}
-
-.cards-pages__page-button {
   cursor: pointer;
+  color: white;
 }
 
-.active-group-button,
+.cards-groups__group-button0 {
+  background: #6051c330;
+}
+
+.cards-groups__group-button1 {
+  background: #6051c340;
+}
+
+.cards-groups__group-button2 {
+  background: #6051c350;
+}
+
+.cards-groups__group-button3 {
+  background: #6051c360;
+}
+
+.cards-groups__group-button4 {
+  background: #6051c370;
+}
+
+.cards-groups__group-button5 {
+  background: #6051c380;
+}
+
+.cards-groups__group-button6 {
+  background: #6051c39f;
+}
+
+.cards-pages__page-button {
+  height: 50px;
+  width: 50px;
+  border-radius: 10%;
+  border: none;
+  background: #8b7ee1b4;
+  cursor: pointer;
+  color: white;
+}
+
+.active-group-button {
+  background: #271a7fce;
+  pointer-events: none;
+  cursor: none;
+}
+
 .active-page-button {
-  background: red;
+  background: #8C7EE1;
   pointer-events: none;
   cursor: none;
 }
@@ -332,12 +499,88 @@ margin-bottom: 30px;
 }
 
 .textbook__cards-block {
-  min-height: 2000px;
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 700px;
 }
 
 .cards-block__card {
   display: flex;
+  height: 250px;
   margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.card-content {
+  width: 650px;
+  padding: 20px;
+  border-radius: 10px 0 0 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #201919;
+}
+
+.card-content__word-and-sound {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-content__word {
+  display: flex;
+}
+
+.word__word-transcription {
+  margin-left: 10px;
+}
+
+.word__word-translate {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.card-content__sound {
+  width: 20px;
+  cursor: pointer;
+}
+
+.card-content__word-explanation {
+  margin-top: 15px;
+}
+
+.word-explanation__explanation-translate {
+  margin-top: 5px;
+}
+
+.card-content__word-example {
+  margin-top: 15px;
+}
+
+.word-example__example-translate {
+  margin-top: 5px;
+}
+
+.card-image {
+  width: 350px;
+  max-width: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 0 10px 10px 0;
+}
+
+/*---------------------------------end textbook-----------------------------------*/
+
+.main__dictionary {
+  text-align: center;
+}
+
+.main__dictionary-oops {
+  margin-top: 20%;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 45px;
+  color: #8c7ecc;
 }
 
 .main__games {
@@ -391,7 +634,7 @@ margin-bottom: 30px;
   align-items: center;
   width: 100%;
   font-size: 1.5rem;
-  background-color: #FF7400;
+  background-color: #a399e181;
   padding: 0 2%;
 }
 

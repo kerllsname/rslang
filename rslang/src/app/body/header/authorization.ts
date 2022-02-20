@@ -119,25 +119,29 @@ export default class Authorization {
 
   logInNotification(state: any, email: HTMLElement, password: HTMLElement) {
     const notification = document.querySelector<HTMLElement>('.authorization__notification');
+    const button = document.querySelector<HTMLElement>('.authorization__submit');
 
-    if (notification) {
+    if (notification && button) {
       if (typeof state === 'object') {
-        email.style.borderBlockColor = 'unset';
-        password.style.borderBlockColor = 'unset';
+        email.style.borderColor = '#198754';
+        password.style.borderColor = '#198754';
         notification.style.display = 'block';
-        notification.innerHTML = 'Success';
+        notification.innerHTML = 'success';
         this.exitHandler();
         this.rebuildHeader(state.name);
+        button.style.marginTop = '50px';
       } else if (state === '403') {
-        email.style.borderBlockColor = 'red';
-        password.style.borderBlockColor = 'red';
+        email.style.borderColor = '#dc3545';
+        password.style.borderBlockColor = '#dc3545';
         notification.style.display = 'block';
-        notification.innerHTML = 'Check password or email';
+        notification.innerHTML = 'сheck password or email';
+        button.style.marginTop = '50px';
       } else if (state === 'false') {
-        email.style.borderBlockColor = 'red';
-        password.style.borderBlockColor = 'red';
+        email.style.borderBlockColor = '#dc3545';
+        password.style.borderBlockColor = '#dc3545';
         notification.style.display = 'block';
-        notification.innerHTML = 'This user is not exist';
+        notification.innerHTML = 'there is no such user';
+        button.style.marginTop = '50px';
       }
     }
   }
@@ -173,26 +177,31 @@ export default class Authorization {
     password:HTMLInputElement,
   ) {
     const notification = document.querySelector<HTMLElement>('.registration__notification');
+    const button = document.querySelector<HTMLElement>('.registration__submit');
 
-    if (notification) {
+    if (notification && button) {
       if (state === '200') {
-        email.style.borderBlockColor = 'unset';
-        password.style.borderBlockColor = 'unset';
+        name.style.borderColor = '#198754';
+        email.style.borderColor = '#198754';
+        password.style.borderColor = '#198754';
         name.value = '';
         email.value = '';
         password.value = '';
         notification.style.display = 'block';
-        notification.innerHTML = 'Success';
+        notification.innerHTML = 'success';
+        button.style.marginTop = '5px';
       } else if (state === '422') {
-        email.style.borderBlockColor = 'red';
-        password.style.borderBlockColor = 'red';
+        email.style.borderColor = '#dc3545';
+        password.style.borderBlockColor = '#dc3545';
         notification.style.display = 'block';
-        notification.innerHTML = 'Check password or email';
+        notification.innerHTML = 'сheck password or email';
+        button.style.marginTop = '5px';
       } else if (state === '417') {
-        password.style.borderBlockColor = 'unset';
-        email.style.borderBlockColor = 'red';
+        email.style.borderColor = '#dc3545';
+        password.style.borderBlockColor = '#dc3545';
         notification.style.display = 'block';
-        notification.innerHTML = 'This user is already exist';
+        notification.innerHTML = 'this user already exists';
+        button.style.marginTop = '5px';
       }
     }
   }
