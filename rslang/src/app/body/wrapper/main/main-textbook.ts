@@ -73,15 +73,12 @@ export default class MainTextbook {
     if (group && page) {
       this.setDefaultCurrentGroupButton(group);
       this.setDefaultCurrentPageButton(page);
-      this.insertCards(group, page);
     } else if (group) {
       this.setDefaultCurrentGroupButton(group);
       this.setDefaultCurrentPageButton(1);
-      this.insertCards(group, 1);
     } else if (page) {
       this.setDefaultCurrentGroupButton(1);
       this.setDefaultCurrentPageButton(page);
-      this.insertCards(1, page);
     } else {
       localStorage.setItem('group', '1');
       localStorage.setItem('page', '1');
@@ -129,7 +126,7 @@ export default class MainTextbook {
       'button',
       ['games__sprint'],
       'sprint',
-    ).render().addEventListener('click', ({ target }) => this.pushBtnPlaySprint(target as HTMLElement));;
+    ).render().addEventListener('click', ({ target }) => this.pushBtnPlaySprint(target as HTMLElement));
   }
 
   buttonCreate(place: string, subPlace: string, classOfButton: string, inner) {
