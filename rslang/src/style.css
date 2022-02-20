@@ -612,20 +612,54 @@ margin-bottom: 30px;
   justify-content: space-around;
 }
 
-.main__games-audio {
+.main__games-audio,
+.main__games-sprint  {
   height: 200px;
   width: 400px;
-  margin-top: 300px;
-  border: 1px solid black;
+  margin-top: 20%;
+  padding: 5px;
+  border: none;
+  border-radius: 20px;
+  background-color: #8c7eccb7;
   text-align: center;
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
 }
 
-.main__games-sprint {
-  height: 200px;
-  width: 400px;
-  margin-top: 300px;
-  border: 1px solid black;
-  text-align: center;
+.game-audio__title,
+.game-sprint__title {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 25px;
+  letter-spacing: 3px;
+}
+
+.game-audio__description,
+.game-sprint__description {
+  margin-top: 15px;
+}
+
+.game-audio__play,
+.game-sprint__play {
+  width: 150px;
+  height: 25px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: none;
+  background: #5b5292af;
+  cursor: pointer;
+  color: white;
+}
+
+.game-audio__play {
+  margin-top: 40px;
+}
+.game-audio__play:hover,
+.game-sprint__play:hover {
+  background: #5b5292;
+  transition: 0.5s ease-in-out;
 }
 
 .main__about {
@@ -633,22 +667,45 @@ margin-bottom: 30px;
   justify-content: space-around;
 }
 
-.about-kirill {
+.about-kirill,
+.about-igor {
   width: 400px;
-  margin-top: 200px;
-  border: 1px solid black;
+  margin-top: 100px;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  background: #5b5292af;
+  color: #201919;
   text-align: center;
 }
 
-.about-igor {
-  width: 400px;
-  margin-top: 200px;
-  border: 1px solid black;
-  text-align: center;
+.about-igor__description,
+.about-kirill__description {
+  margin-top: 15px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #201919;
+}
+
+.description__item {
+  margin-top: 5px;
+  list-style-type: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #201919;
+}
+
+.about-kirill__git,
+.about-igor__git {
+  margin-top: 15px;
+  cursor: pointer;
 }
 
 .about_avatar {
-  width: 350px;
+  height: 300px;
+  margin-top: 15px;
 }
 
 .footer {

@@ -108,6 +108,7 @@ export default class Authorization {
       localStorage.setItem('id', `${answer.userId}`);
 
       this.logInNotification(answer, email, password);
+      window.location.reload();
     }
   }
 
