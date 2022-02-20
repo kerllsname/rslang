@@ -24,7 +24,7 @@ export default class StatisticsBoxGames {
     + this.storage.optional.AudioCountAnswerСorrect;
 
     if (this.text === 'Sprint') {
-      new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-img']).render();
+      new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-img', 'main__statistics__boxGames-img__sprint']).render();
       new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-nameGame'], `${this.text}`).render();
       new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-row1'], `<span class="game-words">${allWordsSprint}</span><span>  words</span>`).render();
       new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-row2'], `<span class="game-accuracy">${Math.trunc((this.storage.optional.SprintCountAnswerСorrect / allWordsSprint) * 100) || '0'}</span><span>% accuracy</span>`).render();
@@ -32,7 +32,7 @@ export default class StatisticsBoxGames {
     }
 
     if (this.text === 'Audio Challenge') {
-      new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-img']).render();
+      new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-img', 'main__statistics__boxGames-img__audio']).render();
       new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-nameGame'], `${this.text}`).render();
       new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-row1'], `<span class="game-words">${allWordsAudio}</span><span>  words</span>`).render();
       new BaseComponent(this.statisticsBoxGames, 'div', ['main__statistics__boxGames-row2'], `<span class="game-accuracy">${Math.trunc((this.storage.optional.AudioCountAnswerСorrect / allWordsAudio) * 100) || '0'}</span><span>% accuracy</span>`).render();

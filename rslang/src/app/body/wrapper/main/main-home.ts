@@ -18,10 +18,10 @@ export default class MainHome {
     new BaseComponent(this.mainHome, 'h1', ['main__home-title'], "If you want to learn English, you've come to the right place.").render();
     this.mainHome.appendChild(this.container);
     this.container.classList.add('main__home-container');
-    new MainBox(this.container, 'Learn words easily with textbook').render();
-    new MainBox(this.container, 'Forgot a word - look in the dictionary').render();
-    new MainBox(this.container, 'Fun learning English through games').render();
-    new MainBox(this.container, "Don't forget to register to see statistics and track progress").render();
+    new MainBox(this.container, 'textbook', 'Learn words easily with textbook').render().addEventListener();
+    new MainBox(this.container, 'dictionary', 'Forgot a word - look in the dictionary').render();
+    new MainBox(this.container, 'games', 'Fun learning English through games').render();
+    new MainBox(this.container, 'statistics', "Don't forget to register to see statistics and track progress").render();
 
     return this.mainHome;
   }

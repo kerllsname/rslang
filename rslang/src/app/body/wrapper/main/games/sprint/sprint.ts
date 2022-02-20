@@ -286,13 +286,13 @@ export default class Sprint {
 
     const marks = document.querySelectorAll('.mark');
     if ((this.storage.inRow > 0) && (this.storage.inRow <= 3)) {
-      marks[this.storage.inRow - 1].setAttribute('style', 'background-color: #ffb3b3');
+      marks[this.storage.inRow - 1].setAttribute('style', 'background-color: #FFE500');
     }
     if ((this.storage.inRow >= 4) && (this.storage.inRow <= 6)) {
-      marks[this.storage.inRow % 4].setAttribute('style', 'background-color: #ff00ff');
+      marks[this.storage.inRow % 4].setAttribute('style', 'background-color: #34D800');
     }
     if ((this.storage.inRow >= 7) && (this.storage.inRow <= 9)) {
-      marks[this.storage.inRow % 7].setAttribute('style', 'background-color: #000000');
+      marks[this.storage.inRow % 7].setAttribute('style', 'background-color: #AC3BD4');
     }
 
     const btnSound = document.querySelector('.sprint__button-sound');
