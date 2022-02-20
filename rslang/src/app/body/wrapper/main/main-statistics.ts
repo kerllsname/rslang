@@ -33,9 +33,11 @@ export default class MainStatistics {
 
     if (userToken && userID) {
       let userData = StatisticStorage;
-      if (await getUserStatistics(userID, userToken)) {
+      const x = getUserStatistics(userID, userToken);
+      if (x.then((el) => el.)) {
         userData = await getUserStatistics(userID, userToken);
       } else {
+        console.log('1');
         const storage: IStatistic = {
           learnedWords: 0,
           optional: {

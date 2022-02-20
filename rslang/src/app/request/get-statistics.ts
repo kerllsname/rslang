@@ -3,7 +3,7 @@ import IStatistic from '../interfaces/statistic';
 export default async function getUserStatistics(
   id: string,
   token: string,
-): Promise<IStatistic> {
+): Promise<boolean | IStatistic> {
   const url = `http://127.0.0.1:8000/users/${id}/statistics`;
 
   const response = await fetch(url, {
@@ -13,6 +13,10 @@ export default async function getUserStatistics(
       Accept: 'application/json',
     },
   });
+
+  if (response.status === 404) {
+    return false;
+  }
 
   const answer = await response.json();
 
