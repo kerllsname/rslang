@@ -1,7 +1,7 @@
 export default async function refresh(id: string, refreshToken: string) {
   const url = `http://127.0.0.1:8000/users/${id}/tokens`;
 
-  const response = fetch(url, {
+  const response = await fetch(url, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${refreshToken}`,
@@ -9,7 +9,7 @@ export default async function refresh(id: string, refreshToken: string) {
     },
   });
 
-  const answer = (await response).json();
+  const answer = await response.json();
 
   return answer;
 }
