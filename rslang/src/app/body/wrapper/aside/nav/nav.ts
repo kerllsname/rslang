@@ -22,6 +22,7 @@ export default class Nav {
 
   handler({ currentTarget: item }) {
     const headerTitle = document.querySelector<HTMLElement>('.header__currentTitle');
+
     if (headerTitle) {
       if (!item.classList.contains('active')) {
         headerTitle.innerHTML = `${item.classList[1]}`;
