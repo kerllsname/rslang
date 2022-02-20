@@ -2,6 +2,10 @@ import BaseComponent from '../../base-сomponent';
 import StatWordsWrong from './result-wrong';
 import StatWordsAnswer from './result-answer';
 import IStorage from '../../../interfaces/audio-challenge-storage';
+import IStatistic from '../../../interfaces/statistic';
+import StatisticStorage from '../../statistics/statistics-storage';
+import saveUserStatistics from '../../../request/put-statistics';
+import getUserStatistics from '../../../request/get-statistics';
 
 export default class Result {
   readonly result: HTMLElement;
@@ -16,7 +20,7 @@ export default class Result {
     this.statisticBox = document.createElement('div');
   }
 
-  render(): HTMLElement {
+  async render() {
     this.root.appendChild(this.result);
     this.result.classList.add('result');
 
@@ -36,6 +40,58 @@ export default class Result {
     new StatWordsAnswer(this.container, this.storage).render();
     new StatWordsWrong(this.container, this.storage).render();
 
-    return this.result;
+    const userToken: string | null = localStorage.getItem('token');
+    const userID: string | null = localStorage.getItem('id');
+    if (userToken && userID) {
+      if (await getUserStatistics(userID, userToken)) {
+        const userData = await getUserStatistics(userID, userToken);
+        userData.learnedWords += this.storage.countAnswerСorrect;
+        userData.optional.AudioCountAnswerСorrect += this.storage.countAnswerСorrect;
+        userData.optional.AudioCountAnswerWrong += this.storage.countAnswerWrong;
+        if (this.storage.setInRow.size > userData.optional.AudioInRow) {
+          userData.optional.AudioInRow = this.storage.setInRow.size;
+        }
+        const storage: IStatistic = {
+          learnedWords: userData.learnedWords,
+          optional: {
+            AudioCountAnswerСorrect: userData.optional.AudioCountAnswerСorrect,
+            AudioCountAnswerWrong: userData.optional.AudioCountAnswerWrong,
+            AudioInRow: userData.optional.AudioInRow,
+            SprintCountAnswerСorrect: userData.optional.SprintCountAnswerСorrect,
+            SprintCountAnswerWrong: userData.optional.SprintCountAnswerWrong,
+            SprintInRow: userData.optional.SprintInRow,
+          },
+        };
+        await saveUserStatistics(userID, userToken, storage);
+      } else {
+        const storage: IStatistic = {
+          learnedWords: 0,
+          optional: {
+            AudioCountAnswerСorrect: 0,
+            AudioCountAnswerWrong: 0,
+            AudioInRow: 0,
+            SprintCountAnswerСorrect: 0,
+            SprintCountAnswerWrong: 0,
+            SprintInRow: 0,
+          },
+        };
+        await saveUserStatistics(userID, userToken, storage);
+        const userData = await getUserStatistics(userID, userToken);
+        userData.learnedWords += this.storage.countAnswerСorrect;
+        userData.optional.AudioCountAnswerСorrect += this.storage.countAnswerСorrect;
+        userData.optional.AudioCountAnswerWrong += this.storage.countAnswerWrong;
+        if (this.storage.setInRow.size > userData.optional.AudioInRow) {
+          userData.optional.AudioInRow = this.storage.setInRow.size;
+        }
+        await saveUserStatistics(userID, userToken, userData);
+      }
+    } else {
+      StatisticStorage.learnedWords += this.storage.countAnswerСorrect;
+      StatisticStorage.optional.AudioCountAnswerСorrect += this.storage.countAnswerСorrect;
+      StatisticStorage.optional.AudioCountAnswerWrong += this.storage.countAnswerWrong;
+      if (this.storage.setInRow.size > StatisticStorage.optional.AudioInRow) {
+        StatisticStorage.optional.AudioInRow = this.storage.setInRow.size;
+      }
+    }
   }
 }

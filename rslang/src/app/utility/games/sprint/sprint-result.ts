@@ -3,7 +3,9 @@ import StatWordsWrong from '../audio-challange/result-wrong';
 import StatWordsAnswer from '../audio-challange/result-answer';
 import IStorage from '../../../interfaces/audio-challenge-storage';
 import IStatistic from '../../../interfaces/statistic';
+import StatisticStorage from '../../statistics/statistics-storage';
 import saveUserStatistics from '../../../request/put-statistics';
+import getUserStatistics from '../../../request/get-statistics';
 
 export default class ResultSprint {
   readonly resultSprint: HTMLElement;
@@ -42,15 +44,62 @@ export default class ResultSprint {
     const userID: string | null = localStorage.getItem('id');
 
     if (userToken && userID) {
-      const storage: IStatistic = {
-        learnedWords: this.storage.countAnswerСorrect,
-        optional: {
-          countAnswerСorrect: this.storage.countAnswerСorrect,
-          countAnswerWrong: this.storage.countAnswerWrong,
-          inRow: this.storage.inRow,
-        },
-      };
-      await saveUserStatistics(userID, userToken, storage);
+      if (await getUserStatistics(userID, userToken)) {
+        const userData = await getUserStatistics(userID, userToken);
+        userData.learnedWords += this.storage.countAnswerСorrect;
+        userData.optional.SprintCountAnswerСorrect += this.storage.countAnswerСorrect;
+        userData.optional.SprintCountAnswerWrong += this.storage.countAnswerWrong;
+        if (this.storage.setInRow.size > userData.optional.SprintInRow) {
+          userData.optional.SprintInRow = this.storage.setInRow.size;
+        }
+        const storage: IStatistic = {
+          learnedWords: userData.learnedWords,
+          optional: {
+            AudioCountAnswerСorrect: userData.optional.AudioCountAnswerСorrect,
+            AudioCountAnswerWrong: userData.optional.AudioCountAnswerWrong,
+            AudioInRow: userData.optional.AudioInRow,
+            SprintCountAnswerСorrect: userData.optional.SprintCountAnswerСorrect,
+            SprintCountAnswerWrong: userData.optional.SprintCountAnswerWrong,
+            SprintInRow: userData.optional.SprintInRow,
+          },
+        };
+        await saveUserStatistics(userID, userToken, storage);
+      } else {
+        const storage: IStatistic = {
+          learnedWords: 0,
+          optional: {
+            AudioCountAnswerСorrect: 0,
+            AudioCountAnswerWrong: 0,
+            AudioInRow: 0,
+            SprintCountAnswerСorrect: 0,
+            SprintCountAnswerWrong: 0,
+            SprintInRow: 0,
+          },
+        };
+        await saveUserStatistics(userID, userToken, storage);
+        const userData = await getUserStatistics(userID, userToken);
+        userData.learnedWords += this.storage.countAnswerСorrect;
+        userData.optional.SprintCountAnswerСorrect += this.storage.countAnswerСorrect;
+        userData.optional.SprintCountAnswerWrong += this.storage.countAnswerWrong;
+        if (this.storage.setInRow.size > userData.optional.SprintInRow) {
+          userData.optional.SprintInRow = this.storage.setInRow.size;
+        }
+        await saveUserStatistics(userID, userToken, userData);
+      }
+    } else {
+      StatisticStorage.learnedWords += this.storage.countAnswerСorrect;
+      StatisticStorage.optional.SprintCountAnswerСorrect += this.storage.countAnswerСorrect;
+      StatisticStorage.optional.SprintCountAnswerWrong += this.storage.countAnswerWrong;
+      if (this.storage.setInRow.size > StatisticStorage.optional.SprintInRow) {
+        StatisticStorage.optional.SprintInRow = this.storage.setInRow.size;
+      }
+    }
+
+    StatisticStorage.learnedWords += this.storage.countAnswerСorrect;
+    StatisticStorage.optional.SprintCountAnswerСorrect += this.storage.countAnswerСorrect;
+    StatisticStorage.optional.SprintCountAnswerWrong += this.storage.countAnswerWrong;
+    if (this.storage.setInRow.size > StatisticStorage.optional.SprintInRow) {
+      StatisticStorage.optional.SprintInRow = this.storage.setInRow.size;
     }
   }
 }

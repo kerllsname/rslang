@@ -1,5 +1,9 @@
 import BaseComponent from '../../../utility/base-сomponent';
 import StatisticsBoxGames from '../../../utility/statistics/statistics-boxGames';
+import IStatistic from '../../../interfaces/statistic';
+import StatisticStorage from '../../../utility/statistics/statistics-storage';
+import saveUserStatistics from '../../../request/put-statistics';
+import getUserStatistics from '../../../request/get-statistics';
 
 export default class MainStatistics {
   readonly mainStatistics: HTMLElement;
@@ -23,35 +27,94 @@ export default class MainStatistics {
     this.boxAccuracy = document.createElement('div');
   }
 
-  render(): HTMLElement {
-    this.root.appendChild(this.mainStatistics);
-    this.mainStatistics.classList.add('main__statistics');
+  async render() {
+    const userToken: string | null = localStorage.getItem('token');
+    const userID: string | null = localStorage.getItem('id');
 
-    new BaseComponent(this.mainStatistics, 'h2', ['main__statistics-title'], 'Today').render();
-    this.mainStatistics.appendChild(this.container);
-    this.container.classList.add('main__statistics__container');
-    this.container.appendChild(this.containerWords);
-    this.containerWords.classList.add('main__statistics__containerWords');
-    this.containerWords.appendChild(this.boxWords);
-    this.boxWords.classList.add('main__statistics__boxWords');
-    new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-words-count'], '0').render();
-    new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-p1'], 'new words').render();
+    if (userToken && userID) {
+      let userData = StatisticStorage;
+      if (await getUserStatistics(userID, userToken)) {
+        userData = await getUserStatistics(userID, userToken);
+      } else {
+        const storage: IStatistic = {
+          learnedWords: 0,
+          optional: {
+            AudioCountAnswerСorrect: 0,
+            AudioCountAnswerWrong: 0,
+            AudioInRow: 0,
+            SprintCountAnswerСorrect: 0,
+            SprintCountAnswerWrong: 0,
+            SprintInRow: 0,
+          },
+        };
+        await saveUserStatistics(userID, userToken, storage);
+        userData = await getUserStatistics(userID, userToken);
+      }
+      const sumNewWords = userData.optional.AudioCountAnswerWrong
+      + userData.optional.AudioCountAnswerСorrect
+      + userData.optional.SprintCountAnswerWrong
+      + userData.optional.SprintCountAnswerСorrect;
 
-    this.boxWords.classList.add('main__statistics__boxWords');
-    new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-words-count'], '0').render();
-    new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-p1'], 'words').render();
-    new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-p2'], 'were learned').render();
+      this.root.appendChild(this.mainStatistics);
+      this.mainStatistics.classList.add('main__statistics');
 
-    this.containerWords.appendChild(this.boxAccuracy);
-    this.boxAccuracy.classList.add('main__statistics__boxAccuracy');
-    new BaseComponent(this.boxAccuracy, 'div', ['main__statistics__boxAccuracy-title'], 'Accuracy').render();
-    new BaseComponent(this.boxAccuracy, 'div', ['main__statistics__boxAccuracy-percent'], '<span class="accuracy-percent">0</span>%').render();
+      new BaseComponent(this.mainStatistics, 'h2', ['main__statistics-title'], 'Today').render();
+      this.mainStatistics.appendChild(this.container);
+      this.container.classList.add('main__statistics__container');
+      this.container.appendChild(this.containerWords);
+      this.containerWords.classList.add('main__statistics__containerWords');
+      this.containerWords.appendChild(this.boxWords);
+      this.boxWords.classList.add('main__statistics__boxWords');
+      new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-words-count'], `${sumNewWords}`).render();
+      new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-p1'], 'new words').render();
 
-    this.container.appendChild(this.containerGames);
-    this.containerGames.classList.add('main__statistics__containerGames');
-    new StatisticsBoxGames(this.containerGames, 'Sprint').render();
-    new StatisticsBoxGames(this.containerGames, 'Audio Challenge').render();
+      this.boxWords.classList.add('main__statistics__boxWords');
+      new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-words-count'], `${userData.learnedWords}`).render();
+      new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-p1'], 'words').render();
+      new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-p2'], 'were learned').render();
 
-    return this.mainStatistics;
+      this.containerWords.appendChild(this.boxAccuracy);
+      this.boxAccuracy.classList.add('main__statistics__boxAccuracy');
+      new BaseComponent(this.boxAccuracy, 'div', ['main__statistics__boxAccuracy-title'], 'Accuracy').render();
+      new BaseComponent(this.boxAccuracy, 'div', ['main__statistics__boxAccuracy-percent'], `<span class="accuracy-percent">${Math.trunc((userData.learnedWords / sumNewWords) * 100) || '0'}</span>%`).render();
+
+      this.container.appendChild(this.containerGames);
+      this.containerGames.classList.add('main__statistics__containerGames');
+      new StatisticsBoxGames(this.containerGames, 'Sprint', userData).render();
+      new StatisticsBoxGames(this.containerGames, 'Audio Challenge', userData).render();
+    } else {
+      const sumNewWords = StatisticStorage.optional.AudioCountAnswerWrong
+      + StatisticStorage.optional.AudioCountAnswerСorrect
+      + StatisticStorage.optional.SprintCountAnswerWrong
+      + StatisticStorage.optional.SprintCountAnswerСorrect;
+
+      this.root.appendChild(this.mainStatistics);
+      this.mainStatistics.classList.add('main__statistics');
+
+      new BaseComponent(this.mainStatistics, 'h2', ['main__statistics-title'], 'Today').render();
+      this.mainStatistics.appendChild(this.container);
+      this.container.classList.add('main__statistics__container');
+      this.container.appendChild(this.containerWords);
+      this.containerWords.classList.add('main__statistics__containerWords');
+      this.containerWords.appendChild(this.boxWords);
+      this.boxWords.classList.add('main__statistics__boxWords');
+      new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-words-count'], `${sumNewWords}`).render();
+      new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-p1'], 'new words').render();
+
+      this.boxWords.classList.add('main__statistics__boxWords');
+      new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-words-count'], `${StatisticStorage.learnedWords}`).render();
+      new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-p1'], 'words').render();
+      new BaseComponent(this.boxWords, 'div', ['main__statistics__boxWords-p2'], 'were learned').render();
+
+      this.containerWords.appendChild(this.boxAccuracy);
+      this.boxAccuracy.classList.add('main__statistics__boxAccuracy');
+      new BaseComponent(this.boxAccuracy, 'div', ['main__statistics__boxAccuracy-title'], 'Accuracy').render();
+      new BaseComponent(this.boxAccuracy, 'div', ['main__statistics__boxAccuracy-percent'], `<span class="accuracy-percent">${Math.trunc((StatisticStorage.learnedWords / sumNewWords) * 100) || '0'}</span>%`).render();
+
+      this.container.appendChild(this.containerGames);
+      this.containerGames.classList.add('main__statistics__containerGames');
+      new StatisticsBoxGames(this.containerGames, 'Sprint', StatisticStorage).render();
+      new StatisticsBoxGames(this.containerGames, 'Audio Challenge', StatisticStorage).render();
+    }
   }
 }
