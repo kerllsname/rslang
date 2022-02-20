@@ -32,12 +32,10 @@ export default class MainStatistics {
     const userID: string | null = localStorage.getItem('id');
 
     if (userToken && userID) {
-      let userData = StatisticStorage;
-      const x = getUserStatistics(userID, userToken);
-      if (x.then((el) => el.)) {
-        userData = await getUserStatistics(userID, userToken);
+      let userData = await getUserStatistics(userID, userToken);
+      if (typeof userData !== 'boolean') {
+        userData = await getUserStatistics(userID, userToken) as IStatistic;
       } else {
-        console.log('1');
         const storage: IStatistic = {
           learnedWords: 0,
           optional: {
@@ -50,7 +48,7 @@ export default class MainStatistics {
           },
         };
         await saveUserStatistics(userID, userToken, storage);
-        userData = await getUserStatistics(userID, userToken);
+        userData = await getUserStatistics(userID, userToken) as IStatistic;
       }
       const sumNewWords = userData.optional.AudioCountAnswerWrong
       + userData.optional.AudioCountAnswerСorrect

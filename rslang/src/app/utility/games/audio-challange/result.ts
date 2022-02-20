@@ -43,8 +43,9 @@ export default class Result {
     const userToken: string | null = localStorage.getItem('token');
     const userID: string | null = localStorage.getItem('id');
     if (userToken && userID) {
-      if (await getUserStatistics(userID, userToken)) {
-        const userData = await getUserStatistics(userID, userToken);
+      let userData = await getUserStatistics(userID, userToken);
+      if (typeof userData !== 'boolean') {
+        userData = await getUserStatistics(userID, userToken) as IStatistic;
         userData.learnedWords += this.storage.countAnswerСorrect;
         userData.optional.AudioCountAnswerСorrect += this.storage.countAnswerСorrect;
         userData.optional.AudioCountAnswerWrong += this.storage.countAnswerWrong;
@@ -76,7 +77,7 @@ export default class Result {
           },
         };
         await saveUserStatistics(userID, userToken, storage);
-        const userData = await getUserStatistics(userID, userToken);
+        userData = await getUserStatistics(userID, userToken) as IStatistic;
         userData.learnedWords += this.storage.countAnswerСorrect;
         userData.optional.AudioCountAnswerСorrect += this.storage.countAnswerСorrect;
         userData.optional.AudioCountAnswerWrong += this.storage.countAnswerWrong;
