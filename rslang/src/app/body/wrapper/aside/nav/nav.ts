@@ -21,10 +21,14 @@ export default class Nav {
   }
 
   handler({ currentTarget: item }) {
-    if (!item.classList.contains('active')) {
-      deletePage();
-      item.classList.toggle('active');
-      getPage(item.classList[1]);
+    const headerTitle = document.querySelector<HTMLElement>('.header__currentTitle');
+    if (headerTitle) {
+      if (!item.classList.contains('active')) {
+        headerTitle.innerHTML = `${item.classList[1]}`;
+        deletePage();
+        item.classList.toggle('active');
+        getPage(item.classList[1]);
+      }
     }
   }
 
