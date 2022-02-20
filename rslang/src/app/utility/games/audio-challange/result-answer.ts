@@ -22,7 +22,7 @@ export default class StatWordsAnswer {
     this.statWordsAnswer.classList.add('result-answer');
 
     new BaseComponent(this.statWordsAnswer, 'div', ['result-answer__plus']).render();
-    new BaseComponent(this.statWordsAnswer, 'h2', ['result-answer__name'], 'Answer').render();
+    new BaseComponent(this.statWordsAnswer, 'h2', ['result-answer__name'], 'Right').render();
     for (let i = 0; i < this.storage.namesAnswerСorrect.length; i += 1) {
       new BaseComponent(this.statWordsAnswer, 'section', ['result-answer__container'], `<div class = "result__sound-answer" data-ind = "${i}"></div><span class = "result__word">${this.storage.namesAnswerСorrect[i]}</span><span class = "result__translate"> - ${this.storage.namesAnswerСorrectTranslate[i]}</span>`)
         .render();

@@ -18,22 +18,16 @@ export default class MainGames {
   pushBtnPlayAudio(target: HTMLElement | null): void {
     if (target && target.tagName === 'BUTTON') {
       // ПЕРЕРИСОВКА
-      const main: HTMLElement | null = document.querySelector('.main');
-      if (main) {
-        this.mainGames.remove();
-        new AudioChallangeLvl(main).render();
-      }
+      this.mainGames.remove();
+      new AudioChallangeLvl(this.root).render();
     }
   }
 
   pushBtnPlaySprint(target: HTMLElement | null): void {
     if (target && target.tagName === 'BUTTON') {
       // ПЕРЕРИСОВКА
-      const main: HTMLElement | null = document.querySelector('.main');
-      if (main) {
-        this.mainGames.remove();
-        new SprintLvl(main).render();
-      }
+      this.mainGames.remove();
+      new SprintLvl(this.root).render();
     }
   }
 

@@ -4,6 +4,7 @@ import IUser from '../../interfaces/user';
 import registarion from '../../request/registration';
 import signIn from '../../request/log-in';
 import BaseComponent from '../../utility/base-сomponent';
+import saveUserStatistics from '../../request/put-statistics';
 
 export default class Authorization {
   readonly authWrapper: HTMLElement;
@@ -158,6 +159,7 @@ export default class Authorization {
       };
 
       const answer = await this.createUser(user);
+
       this.registrationNotification(answer, name, email, password);
     }
   }
