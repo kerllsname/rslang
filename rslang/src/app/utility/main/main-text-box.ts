@@ -14,7 +14,7 @@ export default class MainBox {
     this.mainBox.classList.add('main__home-box');
 
     new BaseComponent(this.mainBox, 'div', ['main__home-img', `main__home-img__${this.task}`]).render();
-    new BaseComponent(this.mainBox, 'div', ['main__home-text'], `${this.text}`).render();
+    new BaseComponent(this.mainBox, 'section', ['main__home-text'], `${this.text}`).render();
 
     return this.mainBox;
   }
