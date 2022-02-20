@@ -27,7 +27,7 @@ export default class AudioChallange {
     this.isPush = false;
   }
 
-  getRandomWord() {
+  getRandomWord(): string {
     const randomIndex = Math.floor(Math.random() * 600);
     return this.wordsInGroup[randomIndex].wordTranslate;
   }
@@ -122,9 +122,7 @@ export default class AudioChallange {
 
     this.audioChallange.appendChild(this.containerPanel);
     this.containerPanel.classList.add('main__games__audio-challange__containerPanel');
-    new BaseComponent(this.containerPanel, 'div', ['main__games__audio-challange__containerPanel-buttonVolume']).render();
     new BaseComponent(this.containerPanel, 'div', ['main__games__audio-challange__containerPanel-counter'], `<span class="audio-challange__words-count">${this.currentCountWord}</span>/<span class="audio-challange__words-all">20</span>`).render();
-    new BaseComponent(this.containerPanel, 'div', ['main__games__audio-challange__containerPanel-fullScreen']).render();
 
     playSound(this.currentWord);
 
@@ -147,7 +145,7 @@ export default class AudioChallange {
       item.addEventListener('click', ({ target }) => this.pushBtnWrong(target as HTMLElement));
     });
 
-    const btnSound = document.querySelector('.main__games__audio-challange-buttonSound');
+    const btnSound: HTMLElement | null = document.querySelector('.main__games__audio-challange-buttonSound');
     if (btnSound) {
       btnSound.addEventListener('click', this.pushBtnSound);
     }

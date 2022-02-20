@@ -246,10 +246,10 @@ export default class Sprint {
 
   findButton = (event: KeyboardEvent): void => {
     if (event.key === 'ArrowRight') {
-      this.pressLeft();
+      this.pressRight();
     }
     if (event.key === 'ArrowLeft') {
-      this.pressRight();
+      this.pressLeft();
     }
   };
 
