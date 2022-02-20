@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
 import getData from '../../request/get-data';
 import BaseComponent from '../base-сomponent';
@@ -8,15 +9,13 @@ export default class Card {
 
   readonly imageBlock: HTMLElement;
 
-  readonly image: HTMLImageElement;
-
   readonly contentBlock: HTMLElement;
 
   readonly wordAndSound: HTMLElement;
 
   readonly word: HTMLElement;
 
-  readonly sound: HTMLElement;
+  readonly sound: HTMLImageElement;
 
   readonly wordExplanation: HTMLElement;
 
@@ -30,11 +29,10 @@ export default class Card {
   ) {
     this.card = document.createElement('div');
     this.imageBlock = document.createElement('div');
-    this.image = document.createElement('img');
     this.contentBlock = document.createElement('div');
     this.wordAndSound = document.createElement('div');
     this.word = document.createElement('div');
-    this.sound = document.createElement('div');
+    this.sound = document.createElement('img');
     this.wordExplanation = document.createElement('div');
     this.wordExample = document.createElement('div');
 
@@ -44,6 +42,7 @@ export default class Card {
   render() {
     this.root.appendChild(this.card);
     this.card.classList.add('cards-block__card');
+    this.colorCards();
 
     this.card.appendChild(this.contentBlock);
     this.contentBlock.classList.add('card-content');
@@ -59,6 +58,7 @@ export default class Card {
 
     this.wordAndSound.appendChild(this.sound);
     this.sound.classList.add('card-content__sound');
+    this.sound.src = '../../../assets/svg/play-button.svg';
 
     this.contentBlock.appendChild(this.wordExplanation);
     this.wordExplanation.classList.add('card-content__word-explanation');
@@ -69,6 +69,10 @@ export default class Card {
     this.insertHandler();
   }
 
+  insertAudio(data: IWord[], wordNum: number) {
+    this.sound.addEventListener('click', (button) => this.soundHandler(data, wordNum, button));
+  }
+
   async insertHandler() {
     const data: IWord[] = await getData(`words?page=${this.page}&group=${this.group}`);
 
@@ -76,49 +80,55 @@ export default class Card {
   }
 
   async insertImage(data: IWord[], wordNum: number) {
-    this.imageBlock.appendChild(this.image);
-    this.image.classList.add('card-image__image');
-    this.image.src = `http://localhost:8000/${data[wordNum].image}`;
+    this.imageBlock.style.background = `url(http://localhost:8000/${data[wordNum].image})`;
   }
 
   async insertContent(data: IWord[], count: number) {
-    new BaseComponent(this.word, 'div', ['word__word-transcription'], `${data[count].word} - ${data[count].transcription}`).render();
+    new BaseComponent(this.word, 'div', ['word__word'], `<b>${data[count].word}</b>`).render();
+    new BaseComponent(this.word, 'div', ['word__word-transcription'], `${data[count].transcription}`).render();
     new BaseComponent(this.word, 'div', ['word__word-translate'], `${data[count].wordTranslate}`).render();
-    new BaseComponent(this.sound, 'button', ['word__word-sound'], 'play').render().addEventListener('click', () => this.soundHandler(data, count));
     new BaseComponent(this.wordExplanation, 'div', ['word-explanation__explanation'], `${data[count].textMeaning}`).render();
     new BaseComponent(this.wordExplanation, 'div', ['word-explanation__explanation-translate'], `${data[count].textMeaningTranslate}`).render();
     new BaseComponent(this.wordExample, 'div', ['word-example__example'], `${data[count].textExample}`).render();
     new BaseComponent(this.wordExample, 'div', ['word-example__example-translate'], `${data[count].textExampleTranslate}`).render();
 
     this.insertImage(data, count);
+    this.insertAudio(data, count);
   }
 
-  soundHandler(data: IWord[], count: number) {
+  colorCards() {
+    const currentGroup = localStorage.getItem('group');
+
+    this.contentBlock.classList.add(`cards-groups__group-button${currentGroup}`);
+  }
+
+  soundHandler(data: IWord[], count: number, { currentTarget: button }) {
     const wordAudio = document.createElement('audio');
     const meaningAudio = document.createElement('audio');
     const exampleAudio = document.createElement('audio');
-    const buttons = document.querySelectorAll('.word__word-sound');
 
     wordAudio.src = `http://localhost:8000/${data[count].audio}`;
     meaningAudio.src = `http://localhost:8000/${data[count].audioMeaning}`;
     exampleAudio.src = `http://localhost:8000/${data[count].audioExample}`;
 
-    wordAudio.play();
+    if (localStorage.getItem('play') !== 'true') {
+      wordAudio.play();
 
-    buttons.forEach((button) => {
-      button.setAttribute('disabled', 'true');
-    });
+      localStorage.setItem('play', 'true');
+      button.src = '../../../assets/svg/pause-button.svg';
+      button.style.cursor = 'default';
 
-    wordAudio.onended = () => {
-      meaningAudio.play();
-      meaningAudio.onended = () => {
-        exampleAudio.play();
-        exampleAudio.onended = () => {
-          buttons.forEach((button) => {
-            button.removeAttribute('disabled');
-          });
+      wordAudio.onended = () => {
+        meaningAudio.play();
+        meaningAudio.onended = () => {
+          exampleAudio.play();
+          exampleAudio.onended = () => {
+            localStorage.setItem('play', 'false');
+            button.src = '../../../assets/svg/play-button.svg';
+            button.style.cursor = 'pointer';
+          };
         };
       };
-    };
+    }
   }
 }

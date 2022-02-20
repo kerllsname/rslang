@@ -11,6 +11,10 @@ export default class MainTextbook {
 
   readonly cardsBlock: HTMLElement;
 
+  readonly cardsGroups: HTMLElement;
+
+  readonly cardsPages: HTMLElement;
+
   readonly cardsGroupsList: HTMLElement;
 
   readonly cardsPagesList: HTMLElement;
@@ -19,6 +23,8 @@ export default class MainTextbook {
     this.mainTextbook = document.createElement('div');
     this.gamesBlock = document.createElement('div');
     this.cardsBlock = document.createElement('div');
+    this.cardsGroups = document.createElement('div');
+    this.cardsPages = document.createElement('div');
     this.cardsGroupsList = document.createElement('ul');
     this.cardsPagesList = document.createElement('ul');
     this.groupsHandler = this.groupsHandler.bind(this);
@@ -33,11 +39,18 @@ export default class MainTextbook {
     this.gamesBlock.classList.add('textbook__games');
     this.insertGames();
 
-    this.mainTextbook.appendChild(this.cardsGroupsList);
+    this.mainTextbook.appendChild(this.cardsGroups);
+    this.cardsGroups.classList.add('textbook__cards-groups-block');
+
+    this.cardsGroups.appendChild(this.cardsGroupsList);
     this.cardsGroupsList.classList.add('textbook__cards-groups');
     this.insertCardsGroupsList();
+    this.colorGroupsButtons();
 
-    this.mainTextbook.appendChild(this.cardsPagesList);
+    this.mainTextbook.appendChild(this.cardsPages);
+    this.cardsPages.classList.add('textbook__cards-pages-block');
+
+    this.cardsPages.appendChild(this.cardsPagesList);
     this.cardsPagesList.classList.add('textbook__cards-pages');
     this.insertCardsPagesList();
 
@@ -141,14 +154,24 @@ export default class MainTextbook {
     }
   }
 
-  groupsHandler({ currentTarget: button }) {
-    const page = Number(localStorage.getItem('page'));
+  colorGroupsButtons() {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.cards-groups__group-button');
 
-    this.currentGroupButton(button, false);
-    deleteBlocks();
-    this.currentGroupButton(button, true);
-    localStorage.setItem('group', button.innerHTML);
-    this.insertCards(button.innerHTML, page);
+    for (let i = 0; i < buttons.length; i += 1) {
+      buttons[i].classList.add(`cards-groups__group-button${i}`);
+    }
+  }
+
+  groupsHandler({ currentTarget: button }) {
+    if (button.innerHTML !== '7') {
+      const page = Number(localStorage.getItem('page'));
+
+      this.currentGroupButton(button, false);
+      deleteBlocks();
+      this.currentGroupButton(button, true);
+      localStorage.setItem('group', button.innerHTML);
+      this.insertCards(button.innerHTML, page);
+    }
   }
 
   currentGroupButton(button: HTMLElement, state: boolean) {
