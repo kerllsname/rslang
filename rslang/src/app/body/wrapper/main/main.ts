@@ -11,11 +11,9 @@ export default class Main {
     this.root.appendChild(this.main);
     this.main.classList.add('main');
 
-    const x = this.restorePage();
+    new MainHome(this.main).render();
 
-    if (!x) {
-      new MainHome(this.main).render();
-    }
+    this.restorePage();
 
     return this.main;
   }
@@ -31,8 +29,6 @@ export default class Main {
           item.dispatchEvent(new MouseEvent('click', { shiftKey: true }));
         }
       });
-
-      return true;
     }
   }
 }

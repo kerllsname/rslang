@@ -44,8 +44,9 @@ export default class ResultSprint {
     const userID: string | null = localStorage.getItem('id');
 
     if (userToken && userID) {
-      if (await getUserStatistics(userID, userToken)) {
-        const userData = await getUserStatistics(userID, userToken);
+      let userData = await getUserStatistics(userID, userToken);
+      if (typeof userData !== 'boolean') {
+        userData = await getUserStatistics(userID, userToken) as IStatistic;
         userData.learnedWords += this.storage.countAnswerСorrect;
         userData.optional.SprintCountAnswerСorrect += this.storage.countAnswerСorrect;
         userData.optional.SprintCountAnswerWrong += this.storage.countAnswerWrong;
@@ -77,7 +78,7 @@ export default class ResultSprint {
           },
         };
         await saveUserStatistics(userID, userToken, storage);
-        const userData = await getUserStatistics(userID, userToken);
+        userData = await getUserStatistics(userID, userToken) as IStatistic;
         userData.learnedWords += this.storage.countAnswerСorrect;
         userData.optional.SprintCountAnswerСorrect += this.storage.countAnswerСorrect;
         userData.optional.SprintCountAnswerWrong += this.storage.countAnswerWrong;
