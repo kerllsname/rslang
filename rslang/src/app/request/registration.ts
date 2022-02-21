@@ -2,7 +2,7 @@ import IUser from '../interfaces/user';
 
 export default async function registarion(user: IUser) {
   const response = await fetch(
-    'http://127.0.0.1:8000/users',
+    'https://rslang-learnwords-team20.herokuapp.com/users',
     {
       method: 'POST',
       headers: {

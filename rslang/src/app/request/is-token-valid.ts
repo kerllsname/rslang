@@ -1,5 +1,5 @@
 export default async function getUser(id: string, token: string) {
-  const url = `http://127.0.0.1:8000/users/${id}`;
+  const url = `https://rslang-learnwords-team20.herokuapp.com/users/${id}`;
 
   const response = fetch(url, {
     method: 'GET',

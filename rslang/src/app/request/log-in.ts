@@ -1,5 +1,5 @@
 export default async function signIn(user: object) {
-  const response = await fetch('http://127.0.0.1:8000/signin', {
+  const response = await fetch('https://rslang-learnwords-team20.herokuapp.com/signin', {
     method: 'POST',
     headers: {
       Accept: 'application/json',

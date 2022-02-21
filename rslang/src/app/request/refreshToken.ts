@@ -1,5 +1,5 @@
 export default async function refresh(id: string, refreshToken: string) {
-  const url = `http://127.0.0.1:8000/users/${id}/tokens`;
+  const url = `https://rslang-learnwords-team20.herokuapp.com/users/${id}/tokens`;
 
   const response = await fetch(url, {
     method: 'GET',

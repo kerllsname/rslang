@@ -5,7 +5,7 @@ export default async function saveUserStatistics(
   token: string,
   storage: IStatistic,
 ) {
-  const url = `http://127.0.0.1:8000/users/${id}/statistics`;
+  const url = `https://rslang-learnwords-team20.herokuapp.com/users/${id}/statistics`;
 
   const response = await fetch(url, {
     method: 'PUT',
