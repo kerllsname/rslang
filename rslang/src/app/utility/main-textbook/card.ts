@@ -80,7 +80,7 @@ export default class Card {
   }
 
   async insertImage(data: IWord[], wordNum: number) {
-    this.imageBlock.style.background = `url(http://localhost:8000/${data[wordNum].image})`;
+    this.imageBlock.style.background = `url(https://rslang-learnwords-team20.herokuapp.com/${data[wordNum].image})`;
   }
 
   async insertContent(data: IWord[], count: number) {
@@ -107,9 +107,9 @@ export default class Card {
     const meaningAudio = document.createElement('audio');
     const exampleAudio = document.createElement('audio');
 
-    wordAudio.src = `http://localhost:8000/${data[count].audio}`;
-    meaningAudio.src = `http://localhost:8000/${data[count].audioMeaning}`;
-    exampleAudio.src = `http://localhost:8000/${data[count].audioExample}`;
+    wordAudio.src = `https://rslang-learnwords-team20.herokuapp.com/${data[count].audio}`;
+    meaningAudio.src = `https://rslang-learnwords-team20.herokuapp.com/${data[count].audioMeaning}`;
+    exampleAudio.src = `https://rslang-learnwords-team20.herokuapp.com/${data[count].audioExample}`;
 
     if (localStorage.getItem('play') !== 'true') {
       wordAudio.play();
